@@ -1,0 +1,12 @@
+{
+  "cSpell.words": [
+    "systemjs"
+  ],
+  "workbench.colorCustomizations": {
+    "terminal.foreground": "#00fd61",
+    "terminal.ansiGreen": "#ff0000",
+    "activityBar.background": "#22320B",
+    "titleBar.activeBackground": "#304610",
+    "titleBar.activeForeground": "#F7FCF1"
+  }
+}

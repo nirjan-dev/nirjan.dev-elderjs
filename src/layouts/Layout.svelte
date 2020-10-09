@@ -19,8 +19,8 @@
 </style>
 
 <svelte:head>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&family=Merriweather:wght@900&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/balloon-css/balloon.min.css" />
 </svelte:head>
 <div class="container">
   {@html templateHtml}

@@ -1,30 +1,182 @@
-.code,
-code {
-  padding: 0 0.25rem;
-  background: #eee;
-  border-radius: 3px;
-  margin-right: 0.5rem;
-  font-family: monospace;
-  display: inline-block;
+:root {
+  /* colors */
+  --purple: #845ec2;
+  --blue-green: #0c9b82;
+  --light-purple: #b39cd0;
+  --gray-purple: #fbeaff;
+  --gray: #444;
+  --dark-purple: #1e0b4f;
+  --white: #fefefe;
+  --black: #111;
+  --purple-gradient-dark: #8e2de2;
+  --purple-gradient-light: #4a00e0;
+  --green-gradient-light: #00c9ff;
+  --green-gradient-dark: #92fe9d;
+
+  /* brand colors */
+  --primary: var(--purple);
+  --secondary: var(--blue-green);
+  --primary-light: var(--light-purple);
+  --light: var(--gray-purple);
+  --extra-light: var(--white);
+  --dark: var(--gray);
+  --extra-dark: var(--black);
+  --primary-gradient: 'linear-gradient(to right, var(--purple-gradient-dark) , var(--purple-gradient-light)';
+  --secondary-gradient: 'linear-gradient(to right,var(--green-gradient-light) ,var(--green-gradient-dark))';
+
+  /* typography */
+  --body-font-family: 'Merriweather Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --heading-font-family: 'Merriweather', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  --light-font-weight: 200;
+  --regular-font-weight: 400;
+  --bold-font-weight: 700;
+  --black-font-weight: 900;
+
+  --body-line-height: 1.5;
+  --body-mobile-line-height: 1.4;
+  --heading-line-height: 1.2;
+
+  --caps-letter-spacing: 0.1rem;
+  --heading-letter-spacing: -0.1rem;
+
+  --font-size-0: 0.7rem;
+  --font-size-1: 1rem;
+  --font-size-2: 1.4rem;
+  --font-size-3: 1.9rem;
+  --font-size-4: 2.8rem;
+  --font-size-5: 3.9rem;
+  --font-size-6: 5.6rem;
+  --font-size-7: 7.9rem;
+
+  /* spacing */
+  --spacing-0: 0.7rem;
+  --spacing-1: 1.2rem;
+  --spacing-2: 1.9rem;
+  --spacing-3: 3.1rem;
+  --spacing-4: 5.083rem;
+  --spacing-5: 8.224rem;
+  --spacing-6: 13.307rem;
+  --spacing-7: 21.53rem;
 }
 
+*,
+:before,
+:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: calc(var(--font-size-1) + 0.3vw);
+}
+body {
+  font-family: var(--body-font-family);
+  line-height: var(--body-line-height);
+  color: var(--dark);
+}
+h1,
+.h1 {
+  font-size: var(--font-size-6);
+}
+h2,
+.h2 {
+  font-size: var(--font-size-5);
+}
+h3,
+.h3 {
+  font-size: var(--font-size-4);
+}
+h4,
+.h4 {
+  font-size: var(--font-size-3);
+}
+h5,
+.h5 {
+  font-size: var(--font-size-2);
+}
+h6,
+.h6 {
+  font-size: var(--font-size-1);
+}
+small {
+  font-size: 95%;
+}
+ul,
+ol {
+  padding-left: var(--spacing-2);
+}
 h1,
 h2,
 h3,
-h4 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font-family);
+  font-weight: var(--black-font-weight);
+  line-height: var(--heading-line-height);
+  letter-spacing: var(--heading-letter-spacing);
+  color: var(--black);
+}
+strong {
+  color: var(--black);
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  max-width: 66ch;
+}
+.lead {
   font-weight: bold;
-  line-height: 2.35rem;
+}
+a {
+  box-shadow: none;
+  transition: color 200ms cubic-bezier(0.39, 0.58, 0.57, 1);
+  text-decoration: none;
+}
+a:hover,
+a:active,
+a:focus {
+  color: var(--secondary);
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  font-size: 0.1px;
+  position: absolute;
 }
 
-body {
-  margin: 0;
-  font-size: 16px;
-  line-height: 22px;
-  color: #06395a;
-  border-top: 10px solid #06395a;
-  padding-top: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
-  background: #f4f7fb;
+@media (max-width: 90em) {
+  html {
+    font-size: calc(var(--font-size-1) + 0.2vw);
+  }
+}
+@media (max-width: 50em) {
+  html {
+    font-size: calc(var(--font-size-1) - 0.1vw);
+  }
+  body {
+    line-height: var(--body-mobile-line-height);
+  }
+  .lead {
+    font-weight: bold;
+    font-size: var(--font-size-1);
+  }
+  h1,
+  .h1 {
+    font-size: var(--font-size-5);
+  }
+  h2,
+  .h2 {
+    font-size: var(--font-size-4);
+  }
+  h3,
+  .h3 {
+    font-size: var(--font-size-3);
+  }
 }

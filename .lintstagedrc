@@ -1,0 +1,4 @@
+{
+  "*.{js}": ["yarn eslint:fix", "git add"],
+  "{*.{svelte}}": ["prettier:svelte", "git add"]
+}

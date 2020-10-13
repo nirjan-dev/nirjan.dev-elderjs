@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/svelte/tsconfig.json",
   "compileOnSave": true,
   "compilerOptions": {
     "target": "es2020",
@@ -11,7 +12,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/node_modules"],
 
   "exclude": [
     "build",

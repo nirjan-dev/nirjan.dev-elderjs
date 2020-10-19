@@ -1,4 +1,5 @@
 <script>
+import Footer from "../components/Footer.svelte";
 import Header from "../components/Header.svelte";
 
   export let templateHtml,helpers;
@@ -16,3 +17,4 @@ import Header from "../components/Header.svelte";
 <main>
   {@html templateHtml}
 </main>
+<Footer/>

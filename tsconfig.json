@@ -7,7 +7,7 @@
     "lib": ["es2020", "DOM"],
     "allowJs": true,
     "outDir": "build",
-    "rootDir": "src",
+    // "rootDir": "src",
     "strict": false,
     "esModuleInterop": true,
     "resolveJsonModule": true

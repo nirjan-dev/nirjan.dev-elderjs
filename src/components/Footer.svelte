@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Container from "./Container.svelte";
 import IoLogoCodepen from 'svelte-icons/io/IoLogoCodepen.svelte';
 import IoLogoTwitter from 'svelte-icons/io/IoLogoTwitter.svelte';

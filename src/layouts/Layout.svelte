@@ -6,7 +6,6 @@ import Header from "../components/Header.svelte";
 </script>
 
 <style>
-
 </style>
 
 <svelte:head>

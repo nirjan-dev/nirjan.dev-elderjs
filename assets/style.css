@@ -76,6 +76,13 @@ body {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
   color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body > main  {
+  flex: 1;
 }
 h1,
 .h1 {

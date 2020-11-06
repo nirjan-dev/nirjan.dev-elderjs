@@ -1,3 +1,7 @@
+<script lang="ts">
+  export let isNarrow:boolean = false;  
+</script>
+
 <style lang="scss">
   .container {
     max-width: 95%;
@@ -16,6 +20,6 @@
   }
 </style>
 
-<div class="container">
+<div class="container" class:narrow={isNarrow}>
   <slot />
 </div>

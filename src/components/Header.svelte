@@ -11,9 +11,6 @@ export let helpers;
     align-items: center;
     @media (max-width: 40em) {
       flex-direction: column;
-      nav {
-        margin: var(--spacing-1);
-      }
     }
   }
 </style>

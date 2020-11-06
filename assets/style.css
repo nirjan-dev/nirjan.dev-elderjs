@@ -21,7 +21,7 @@
   --extra-light: var(--white);
   --dark: var(--gray);
   --extra-dark: var(--black);
-  --primary-gradient: 'linear-gradient(to right, var(--purple-gradient-dark) , var(--purple-gradient-light)';
+  --primary-gradient: linear-gradient(to right, var(--purple-gradient-dark) , var(--purple-gradient-light));
   --secondary-gradient: 'linear-gradient(to right,var(--green-gradient-light) ,var(--green-gradient-dark))';
 
   /* typography */

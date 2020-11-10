@@ -41,6 +41,9 @@ import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
         height: 1em;
         color: inherit;
         display: inline-block;
+      & > :global(svg) {
+        fill: currentColor;
+      }
     }
   }
 </style>

@@ -31,6 +31,8 @@
     if (!isEmail(contactForm.email)) {
       errors.email = 'Email is not valid';
     }
+    // svelte needs an LHS assignment for reactivity to work
+    errors = {...errors};
     if (contactForm.name.length < 5 || contactForm.description.length < 10 || !isEmail(contactForm.email)) {
       return false;
     } else {

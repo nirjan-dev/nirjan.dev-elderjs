@@ -6,7 +6,6 @@
     email: '',
     description: '',
   };
- 
 
   let errors = {
     name: null,
@@ -20,10 +19,10 @@
     // reset form errors and validate again
 
     errors.name = errors.description = errors.email = null;
-    console.log("validated")
+    console.log('validated');
 
-    if (contactForm.name.length < 5) {
-      errors.name = 'Name must be at  least 5 characters';
+    if (contactForm.name.length === 0) {
+      errors.name = 'Name is required';
     }
     if (contactForm.description.length < 10) {
       errors.description = 'Description must be at least 10 characters';
@@ -32,25 +31,21 @@
       errors.email = 'Email is not valid';
     }
     // svelte needs an LHS assignment for reactivity to work
-    errors = {...errors};
+    errors = { ...errors };
     if (contactForm.name.length < 5 || contactForm.description.length < 10 || !isEmail(contactForm.email)) {
       return false;
     } else {
       return true;
     }
-  }
+  };
 
   const handleSubmit = () => {
 
-    console.log('handle submit called')
-    console.log({errors});
-
-
     if (!validateForm()) {
-      console.log({errors});
+      console.log({ errors });
       return;
     }
-    formState = 'SENDING';
+    // formState = 'SENDING';
     // fetch('/', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -65,17 +60,102 @@
     //   })
     //   .catch((error) => {
     //     console.error(error);
-    //   });
-  }
+    //   })
+
+    
+  };
 
   function encodeForm(data) {
     return Object.keys(data)
       .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
       .join('&');
   }
-
-
 </script>
+
+<style lang="scss">
+  .msg {
+    text-align: center;
+    font-weight: bold;
+    font-size: 130%;
+    color: var(--primary);
+    margin: 2rem 0 4rem;
+  }
+
+  .form {
+    margin-top: 2rem;
+    .form-group {
+      position: relative;
+      margin: 1.5rem 0;
+    }
+    .error-msg {
+      color: tomato;
+      min-height: 1.2rem;
+      margin: 0;
+    }
+    input,
+    textarea {
+      background: 0 0;
+      border: none;
+      border-bottom-color: currentcolor;
+      border-bottom-style: none;
+      border-bottom-width: medium;
+      border-radius: 0;
+      border-bottom: 2px solid var(--primary-light);
+      margin-bottom: 1em;
+      display: block;
+      width: 100%;
+      padding: 1rem 1rem;
+      &:focus,
+      &:active {
+        border: none;
+        border-bottom-color: currentcolor;
+        border-bottom-style: none;
+        border-bottom-width: medium;
+        border-bottom: 2px solid var(--primary);
+        background: var(--light);
+      }
+    }
+    label {
+      display: block;
+      font-weight: lighter;
+      color: #666;
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      transition: 0.3s opacity ease-out, 0.3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    textarea:focus + label,
+    textarea:active + label,
+    input:focus + label,
+    input:active + label {
+      transform: translateY(-25px);
+      opacity: 1;
+    }
+    textarea {
+      min-height: 10rem;
+    }
+    .send-btn {
+      background: var(--secondary);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      color: var(--light);
+      border-radius: 5px;
+      box-shadow: 0px 4px 3px 0px rgba(50, 50, 50, 0.2);
+      opacity: 0.9;
+      transition: all 200ms cubic-bezier(0.08, 0.82, 0.17, 1);
+      display: inline-block;
+      cursor: pointer;
+      &:hover,
+      &:active,
+      &:focus {
+        box-shadow: 0px 5px 3px 0px rgba(50, 50, 50, 0.3);
+        opacity: 1;
+        transform: scale(1.025);
+        color: var(--light);
+      }
+    }
+  }
+</style>
 
 {#if formState === 'SENT'}
   <section class="status-screen">
@@ -86,7 +166,7 @@
     <p class="msg">Sending message....</p>
     <!-- <Loading /> -->
   </section>
-{:else }
+{:else}
   <form
   class="form"
   name="contact"

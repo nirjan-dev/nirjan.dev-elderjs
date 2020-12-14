@@ -106,7 +106,7 @@
     margin-top: 2rem;
     &__group {
       position: relative;
-      margin: 1.5rem 0;
+      margin: var(--spacing-2) 0;
     }
     &__error-msg {
       color: tomato;
@@ -121,10 +121,9 @@
       border-bottom-width: medium;
       border-radius: 0;
       border-bottom: 2px solid var(--primary-light);
-      margin-bottom: 1em;
       display: block;
       width: 100%;
-      padding: 1rem 1rem;
+      padding: var(--spacing-0);
       &:focus,
       &:active {
         border: none;
@@ -146,7 +145,7 @@
     }
     &__field:focus + label,
     &__field:active + label {
-      transform: translateY(-25px);
+      transform: translateY(-30px);
       opacity: 1;
     }
     &__field {
@@ -157,7 +156,7 @@
     &__action-btn {
       background: var(--secondary);
       border: none;
-      padding: 0.8rem 1.5rem;
+      padding: var(--spacing-0) var(--spacing-1);
       color: var(--light);
       border-radius: 5px;
       box-shadow: 0px 4px 3px 0px rgba(50, 50, 50, 0.2);

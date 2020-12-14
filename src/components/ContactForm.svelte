@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
   import isEmail from 'validator/lib/isEmail';
+  import Spinner from './spinner.svelte';
 
   let contactForm = {
     name: '',
@@ -13,7 +14,7 @@
     description: null,
   };
 
-  let formState = 'UNSENT';
+  let formState: 'UNSENT' | 'SENDING' | 'SENT' = 'UNSENT';
 
   const validateForm = () => {
     // reset form errors and validate again
@@ -30,7 +31,7 @@
     if (!isEmail(contactForm.email)) {
       errors.email = 'Email is not valid';
     }
-    // svelte needs an LHS assignment for reactivity to work
+    // elderjs needs an LHS assignment for reactivity to work
     errors = { ...errors };
     if (contactForm.name.length < 5 || contactForm.description.length < 10 || !isEmail(contactForm.email)) {
       return false;
@@ -40,29 +41,28 @@
   };
 
   const handleSubmit = () => {
-
     if (!validateForm()) {
       console.log({ errors });
       return;
     }
-    // formState = 'SENDING';
-    // fetch('/', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    //   body: encodeForm({
-    //     'form-name': 'contact',
-    //     ...contactForm,
-    //   }),
-    // })
-    //   .then(() => {
-    //     formState = 'SENT';
-    //     alert('Success!');
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   })
-
-    
+    formState = 'SENDING';
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeForm({
+        'form-name': 'contact',
+        ...contactForm,
+      }),
+    })
+      .then(() => {
+        formState = 'SENT';
+        alert('Success!');
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Sending message failed, Please try again');
+        formState = 'UNSENT';
+      });
   };
 
   function encodeForm(data) {
@@ -73,27 +73,47 @@
 </script>
 
 <style lang="scss">
-  .msg {
-    text-align: center;
-    font-weight: bold;
-    font-size: 130%;
-    color: var(--primary);
-    margin: 2rem 0 4rem;
+  .is-invisible {
+    visibility: hidden;
+  }
+
+  // used to avoid layout shift
+  .grid-wrapper {
+    display: grid;
+    &__item {
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+    }
+  }
+
+  .form-status {
+    &__msg {
+      text-align: center;
+      font-weight: bold;
+      font-size: 130%;
+      color: var(--primary);
+      margin: 2rem 0 4rem;
+    }
+    &__img {
+      max-width: 80%;
+      display: block;
+      margin: 0 auto;
+      max-height: 25vh;
+    }
   }
 
   .form {
     margin-top: 2rem;
-    .form-group {
+    &__group {
       position: relative;
       margin: 1.5rem 0;
     }
-    .error-msg {
+    &__error-msg {
       color: tomato;
       min-height: 1.2rem;
       margin: 0;
     }
-    input,
-    textarea {
+    &__field {
       background: 0 0;
       border: none;
       border-bottom-color: currentcolor;
@@ -115,7 +135,7 @@
         background: var(--light);
       }
     }
-    label {
+    &__label {
       display: block;
       font-weight: lighter;
       color: #666;
@@ -124,17 +144,17 @@
       opacity: 0;
       transition: 0.3s opacity ease-out, 0.3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    textarea:focus + label,
-    textarea:active + label,
-    input:focus + label,
-    input:active + label {
+    &__field:focus + label,
+    &__field:active + label {
       transform: translateY(-25px);
       opacity: 1;
     }
-    textarea {
-      min-height: 10rem;
+    &__field {
+      &.with-min-height {
+        min-height: 10rem;
+      }
     }
-    .send-btn {
+    &__action-btn {
       background: var(--secondary);
       border: none;
       padding: 0.8rem 1.5rem;
@@ -157,51 +177,64 @@
   }
 </style>
 
-{#if formState === 'SENT'}
-  <section class="status-screen">
-    <p class="msg">✔ Message Sent successfully....</p>
+<div class="grid-wrapper">
+  <section class="form-status grid-wrapper__item" class:is-invisible={formState !== 'SENT'}>
+    <p class="form-status__msg">✔ Message Sent successfully....</p>
+    <img class="form-status__img" src="/img/mail_sent.svg" alt="" />
   </section>
-{:else if formState === 'SENDING'}
-  <section class="status-screen">
-    <p class="msg">Sending message....</p>
-    <!-- <Loading /> -->
+  <section class="form-status grid-wrapper__item" class:is-invisible={formState !== 'SENDING'}>
+    <p class="form-status__msg">Sending message....</p>
+    <Spinner />
   </section>
-{:else}
   <form
-  class="form"
-  name="contact"
-  action="/contact"
-  method="post"
-  data-netlify="true"
-  data-netlify-honeypot="bot-field"
-  on:submit|preventDefault={handleSubmit}>
-  <input type="hidden" name="form-name" value="contact" />
-  <div hidden><label> Don’t fill this out: <input name="bot-field" /> </label></div>
-  <div class="form-group">
-    <input placeholder="Your Name" bind:value={contactForm.name} name="name" type="text" id="name" />
-    <label for="name">Name</label>
-    {#if errors.name}
-        <p class="error-msg">{errors.name}</p>
-    {/if}
-  </div>
-  <div class="form-group">
-    <input placeholder="Your Email" bind:value={contactForm.email} name="email" type="text" id="email" />
-    <label for="email">Email</label>
-    {#if errors.email}
-        <p class="error-msg">{errors.email}</p>
-    {/if}
-  </div>
-  <div class="form-group">
-    <textarea
-      bind:value={contactForm.description}
-      name="description"
-      id="description"
-      placeholder="Project Description" />
-    <label for="description">Description</label>
-    {#if errors.description}
-        <p class="error-msg">{errors.description}</p>
-    {/if}
-  </div>
-  <div class="form-group"><button class="send-btn" type="submit">Send</button></div>
+    class:is-invisible={formState !== 'UNSENT'}
+    class="form grid-wrapper__item"
+    name="contact"
+    action="/contact"
+    method="post"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    on:submit|preventDefault={handleSubmit}>
+    <input type="hidden" name="form-name" value="contact" />
+    <div hidden><label> Don’t fill this out: <input name="bot-field" /> </label></div>
+    <div class="form__group">
+      <input
+        class="form__field"
+        placeholder="Your Name"
+        bind:value={contactForm.name}
+        name="name"
+        type="text"
+        id="name" />
+      <label class="form__label" for="name">Name</label>
+      {#if errors.name}
+        <p class="form__error-msg">{errors.name}</p>
+      {/if}
+    </div>
+    <div class="form__group">
+      <input
+        class="form__field"
+        placeholder="Your Email"
+        bind:value={contactForm.email}
+        name="email"
+        type="text"
+        id="email" />
+      <label class="form__label" for="email">Email</label>
+      {#if errors.email}
+        <p class="form__error-msg">{errors.email}</p>
+      {/if}
+    </div>
+    <div class="form__group">
+      <textarea
+        class="form__field with-min-height"
+        bind:value={contactForm.description}
+        name="description"
+        id="description"
+        placeholder="Project Description" />
+      <label class="form__label" for="description">Description</label>
+      {#if errors.description}
+        <p class="form__error-msg">{errors.description}</p>
+      {/if}
+    </div>
+    <div class="form__group"><button class="form__action-btn" type="submit">Send</button></div>
   </form>
-{/if}
+</div>

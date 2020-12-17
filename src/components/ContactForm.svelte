@@ -20,7 +20,6 @@
     // reset form errors and validate again
 
     errors.name = errors.description = errors.email = null;
-    console.log('validated');
 
     if (contactForm.name.length === 0) {
       errors.name = 'Name is required';
@@ -42,7 +41,6 @@
 
   const handleSubmit = () => {
     if (!validateForm()) {
-      console.log({ errors });
       return;
     }
     formState = 'SENDING';

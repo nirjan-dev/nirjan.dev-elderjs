@@ -374,6 +374,7 @@ template {
   --extra-light: var(--white);
   --dark: var(--gray);
   --extra-dark: var(--black);
+  --primary-dark: var(--dark-purple);
   --primary-gradient: linear-gradient(to right, var(--purple-gradient-dark) , var(--purple-gradient-light));
   --secondary-gradient: 'linear-gradient(to right,var(--green-gradient-light) ,var(--green-gradient-dark))';
 
@@ -478,10 +479,10 @@ h6 {
   font-weight: var(--black-font-weight);
   line-height: var(--heading-line-height);
   letter-spacing: var(--heading-letter-spacing);
-  color: var(--black);
+  color: var(--primary-dark);
 }
 strong {
-  color: var(--black);
+  color: var(--primary-dark);
 }
 p,
 h1,

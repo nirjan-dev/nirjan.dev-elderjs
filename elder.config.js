@@ -29,16 +29,16 @@ module.exports = {
       // this reloads your browser when nodemon restarts your server.
       port: 8080,
     },
-    '@elderjs/plugin-images': {
-      folders: [
-        {
-          src: '/assets/img/*',
-          output: '/img/',
-        },
-      ],
-      imageManifest: '/assets/img/ejs-image-manifest.json', // relative to root dir
-      cacheFolder: '/assets/img/sizes/', // relative to root dir
-    },
+    // '@elderjs/plugin-images': {
+    //   folders: [
+    //     {
+    //       src: '/assets/img/*',
+    //       output: '/img/',
+    //     },
+    //   ],
+    //   imageManifest: '/assets/img/ejs-image-manifest.json', // relative to root dir
+    //   cacheFolder: '/assets/img/sizes/', // relative to root dir
+    // },
   },
   shortcodes: { closePattern: '}}', openPattern: '{{' },
 };

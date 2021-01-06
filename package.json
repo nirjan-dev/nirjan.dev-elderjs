@@ -34,6 +34,7 @@
     "gray-matter": "^4.0.2",
     "intersection-observer": "^0.12.0",
     "markdown-js": "^0.0.4",
+    "netlify-cms-app": "^2.14.10",
     "polka": "^0.5.2",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",

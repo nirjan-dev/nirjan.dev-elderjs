@@ -11,7 +11,7 @@ excerpt: In this post I explain how lexical scope and closures work in
 ---
 ### Do I really need to understand these thingss?
 
-Can't I just memorize some stuff about scopes and closures for job interviews and will I even use closures in my code? Nope, scopes and closures are not just something you memorize for job interviews and Yes, you're 100% gonna use closures. Read till the end of this article and it may surprise you how much of JavaScript code uses closures.
+ Nope, scopes and closures are not just something you memorize for job interviews and Yes, you're 100% gonna use closures. Read till the end of this article and it may surprise you how much of JavaScript code uses closures.
 
 ### How Scope works in JavaScript
 

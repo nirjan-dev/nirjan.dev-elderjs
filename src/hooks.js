@@ -112,5 +112,15 @@ const hooks = [
   // },
 
   // If you'd like to see specific examples of how to do things that you think could help improve the template please create a GH issue.
+  {
+    hook: 'bootstrap',
+    name: 'copyNetlifyAdmin',
+    description: 'Copies the netlify cms over to the dist folder',
+    run: ({ settings }) => {
+      const netlifyAdminDirectory = path.resolve(settings.rootDir, './admin');
+      const destination = path.resolve(settings.distDir, './admin');
+      fs.copySync(netlifyAdminDirectory, destination);
+    },
+  },
 ];
 module.exports = hooks;

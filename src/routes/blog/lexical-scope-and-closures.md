@@ -4,10 +4,12 @@ slug: lexical-scope-and-closures
 date: 2019-11-21
 publish: true
 coverImage: /assets/blog/lexical-scope-and-closures/scope-banner.png
-excerpt: In this post I explain how lexical scope and closures work in JavaScript. It can be confusing especially for beginners to grasp how javascript handles scopes and closures so I wrote this to help them and help me in turn to jott down my understanding of them.
+excerpt: In this post I explain how lexical scope and closures work in
+  JavaScript. It can be confusing especially for beginners to grasp how
+  javascript handles scopes and closures so I wrote this to help them and help
+  me in turn to jott down my understanding of them.
 ---
-
-### Do I really need to understand these things?
+### Do I really need to understand these thingss?
 
 Can't I just memorize some stuff about scopes and closures for job interviews and will I even use closures in my code? Nope, scopes and closures are not just something you memorize for job interviews and Yes, you're 100% gonna use closures. Read till the end of this article and it may surprise you how much of JavaScript code uses closures.
 
@@ -35,7 +37,7 @@ function foo() {
 foo();
 ```
 
-_**note:** you might have heard the term lexical scope which is the scope that is defined during a step in the compilation process called lexing. It basically means that scope is defined when you are writing the code (declaring functions), instead of when it is actually executed during runtime._
+**\*note:** you might have heard the term lexical scope which is the scope that is defined during a step in the compilation process called lexing. It basically means that scope is defined when you are writing the code (declaring functions), instead of when it is actually executed during runtime.*
 
 ### Scopes in ES6
 
@@ -144,7 +146,7 @@ updateClickCount(); // 1;
 updateClickCount(); // 2;
 ```
 
-_**note:** JavaScript modules are also created in a similar way using closures, [read more about the module pattern using closures](https://www.joezimjs.com/javascript/javascript-closures-and-the-module-pattern/)_
+**\*note:** JavaScript modules are also created in a similar way using closures, [read more about the module pattern using closures](https://www.joezimjs.com/javascript/javascript-closures-and-the-module-pattern/)*
 
 ### How I finally figured out Scopes and Closures
 

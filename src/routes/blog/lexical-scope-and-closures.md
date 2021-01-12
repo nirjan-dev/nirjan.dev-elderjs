@@ -3,7 +3,7 @@ title: Understanding Lexical Scope and Closures in 3 Minutes
 slug: lexical-scope-and-closures
 date: 2019-11-21
 publish: true
-coverImage: /assets/blog/lexical-scope-and-closures/scope-banner.png
+coverImage: https://res.cloudinary.com/studiodagger/image/upload/v1609989058/scope-banner_azso71.png
 excerpt: In this post I explain how lexical scope and closures work in
   JavaScript. It can be confusing especially for beginners to grasp how
   javascript handles scopes and closures so I wrote this to help them and help
@@ -19,7 +19,7 @@ excerpt: In this post I explain how lexical scope and closures work in
 >
 > [Kyle Simpson](https://twitter.com/getify) (Author of YDKJS series)
 
-![scopes in JavaScript](/assets/blog/lexical-scope-and-closures/scopes.png)
+![scopes in JavaScript](https://res.cloudinary.com/studiodagger/image/upload/v1609989092/scopes_jqsotv.png)
 
 Scope is just the set of rules that govern how the JavaScript engine can look up a variable and figure out it's value. JavaScript had only function scope (with a few exceptions) until ES6 which meant that whenever a new function was declared a new scope was created.
 

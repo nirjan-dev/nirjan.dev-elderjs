@@ -2,6 +2,9 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs-extra');
 const os = require('os');
+const StoryblokClient = require('storyblok-js-client');
+const RichTextResolver = require('storyblok-js-client/dist/rich-text-resolver.cjs');
+const richTextSchema = require('./utils/richTextSchema');
 
 /**
  * Hooks! 
@@ -86,30 +89,42 @@ const hooks = [
   //   },
   // },
 
-  // {
-  //   hook: 'bootstrap',
-  //   name: 'populateDataForAllRequests',
-  //   description:
-  //     'The goal of this hook is to show you that you can get data from anywhere and add it to the data object.',
-  //   priority: 50,
-  //   run: async ({ data }) => {
-  //     // when you uncomment this, check the homepage for a new box at the top.
-  //     return {
-  //       data: {
-  //         ...data,
-  //         testingHooks: true,
-  //         // here we are using the 'os' node.js native, and passing in data on the number of CPUs
-  //         cpus: os.cpus(),
+  {
+    hook: 'bootstrap',
+    name: 'populateDataForAllRequests',
+    description:
+      'The goal of this hook is to show you that you can get data from anywhere and add it to the data object.',
+    priority: 50,
+    run: async ({ data }) => {
+      let Storyblok = new StoryblokClient({
+        accessToken: 'IOjlPrsDjUHGJbuooR5TQQtt',
+      });
+      const resolver = new RichTextResolver(richTextSchema);
+      let posts;
+      try {
+        posts = await Storyblok.getAll('cdn/stories', {
+          starts_with: 'blog/',
+        });
+      } catch (error) {
+        console.log(error);
+      }
 
-  //         // NOTE: here we are polluting the global data object across all 'requests' because we are using the 'bootstrap' hook.
-  //         // This is bad practice in this example because cpus is only used by Home.svelte, but it is illustrated to show how you could
-  //         // add global data.
+      // when you uncomment this, check the homepage for a new box at the top.
+      return {
+        data: {
+          ...data,
+          storyblokClient: Storyblok,
+          storyblokResolver: resolver,
+          posts: posts,
+          // NOTE: here we are polluting the global data object across all 'requests' because we are using the 'bootstrap' hook.
+          // This is bad practice in this example because cpus is only used by Home.svelte, but it is illustrated to show how you could
+          // add global data.
 
-  //         // IMPORTANT: If you want to add data to a specific route only, you should probably do it in your /route.js for that route.
-  //       },
-  //     };
-  //   },
-  // },
+          // IMPORTANT: If you want to add data to a specific route only, you should probably do it in your /route.js for that route.
+        },
+      };
+    },
+  },
 
   // If you'd like to see specific examples of how to do things that you think could help improve the template please create a GH issue.
 ];

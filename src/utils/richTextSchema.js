@@ -1,15 +1,43 @@
-const pick = function (attrs, allowed) {
-  if (!attrs) {
-    return null;
-  }
-  let h = {};
-  for (let key in attrs) {
-    let value = attrs[key];
-    if (allowed.indexOf(key) > -1 && value !== null) {
-      h[key] = value;
-    }
-  }
-  return h;
+const { getImages, getJPEGSrcset, getWebPSrcset, sizes } = require('./responsiveImageHelpers');
+
+const getResponsiveImage = function (node) {
+  const originalLink = node.attrs.src;
+  const { JPEGImages, webPImages, placeholder } = getImages(originalLink, sizes);
+  return {
+    tag: [
+      {
+        tag: 'div',
+        attrs: {
+          class: 'ratio-container unknown-ratio-container',
+        },
+      },
+      {
+        tag: 'picture',
+      },
+      {
+        tag: 'source',
+        attrs: {
+          type: 'image/webp',
+          'data-srcset': `${getWebPSrcset(webPImages, sizes)}`,
+        },
+      },
+      {
+        tag: 'source',
+        attrs: {
+          'data-srcset': `${getJPEGSrcset(JPEGImages, sizes)}`,
+        },
+      },
+      {
+        tag: 'img',
+        attrs: {
+          src: placeholder,
+          alt: node.attrs.alt,
+          class: 'lazyload blur-up responsive-image',
+          'data-src': `${JPEGImages[JPEGImages.length - 1]}`,
+        },
+      },
+    ],
+  };
 };
 
 const isEmailLinkType = (type) => type === 'email';
@@ -55,14 +83,7 @@ module.exports = {
       };
     },
     image(node) {
-      return {
-        singleTag: [
-          {
-            tag: 'img',
-            attrs: pick(node.attrs, ['src', 'alt', 'title']),
-          },
-        ],
-      };
+      return getResponsiveImage(node);
     },
     list_item(node) {
       return {

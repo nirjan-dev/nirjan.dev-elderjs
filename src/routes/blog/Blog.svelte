@@ -3,9 +3,11 @@
   import Container from '../../components/Container.svelte';
   import { DateFormatter } from '../../utils/dateFormatter';
   import RichTextResolver from 'storyblok-js-client/dist/rich-text-resolver.es';
+  import Image from '../../components/Image.svelte';
   // const RichTextResolver = require('storyblok-js-client/dist/rich-text-resolver.cjs')
+  import richTextSchema from '../../utils/richTextSchema';
 
-  const resolver = new RichTextResolver();
+  const resolver = new RichTextResolver(richTextSchema);
 
   export let data: {
     post: {
@@ -15,6 +17,10 @@
       content: {
         excerpt: string;
         body: string;
+        cover: {
+          alt: string;
+          filename: string;
+        };
       };
     };
   };
@@ -49,8 +55,39 @@
 
     pre {
       padding: var(--spacing-1);
-      border-radius: 20px;
+      border-radius: 10px;
       overflow: auto;
+    }
+    // prismjs overides
+    .toolbar-item + .toolbar-item {
+      margin-left: var(--spacing-0);
+    }
+
+    .toolbar-item:last-child {
+      margin-right: var(--spacing-0);
+    }
+
+    div.code-toolbar > .toolbar a,
+    div.code-toolbar > .toolbar button,
+    div.code-toolbar > .toolbar span {
+      padding: var(--spacing-0);
+      border-radius: 10px;
+      &:hover,
+      &:focus {
+        color: var(--extra-light);
+      }
+    }
+
+    div.code-toolbar > .toolbar button {
+      background: var(--secondary);
+      color: var(--extra-light);
+      cursor: pointer;
+      transition: 200ms linear background-color;
+
+      &:hover,
+      &:focus {
+        background-color: var(--primary);
+      }
     }
   }
 
@@ -65,7 +102,10 @@
 
 <Banner title={post.name} subtitle={`Last updated: ${DateFormatter(post.published_at)}`} />
 <Container isNarrow={true}>
-  <p class="lead">{post.content.excerpt}</p>
+  <Image
+    hydrate-options={{ preload: true, loading: 'eager' }}
+    hydrate-client={{ originalLink: post.content.cover.filename, alt: post.content.cover.alt }} />
+
   <article class="post">
     {@html resolver.render(post.content.body)}
   </article>
@@ -99,7 +139,3 @@
     </ul>
   </section>
 </Container>
-
-<pre>
-  {JSON.stringify(data, null, 2)}
-</pre>

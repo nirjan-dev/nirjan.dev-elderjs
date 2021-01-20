@@ -20,4 +20,4 @@
   const { post } = data;
 </script>
 
-<BlogPage {post} />
+<BlogPage hydrate-client={{ post, preview: true }} />

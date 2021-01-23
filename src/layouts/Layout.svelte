@@ -22,6 +22,9 @@
   </script>
   <script defer src="/prismjs/prism.js">
   </script>
+  <link rel="preload" href="/web-components/dist/index.js" as="script" />
+  <script src="/web-components/dist/index.js">
+  </script>
 </svelte:head>
 <Header {helpers} />
 <main>

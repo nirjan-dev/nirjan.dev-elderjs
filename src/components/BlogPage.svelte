@@ -5,9 +5,36 @@
   import RichTextResolver from 'storyblok-js-client/dist/rich-text-resolver.es';
   import Image from './Image.svelte';
   import richTextSchema from '../utils/richTextSchema';
+  import './spinner.svelte';
   import { getImages, getJPEGSrcset, getWebPSrcset, sizes } from '../utils/responsiveImageHelpers';
   import { onMount } from 'svelte';
   const resolver = new RichTextResolver(richTextSchema);
+
+  const componentResolver = (component, blok) => {
+    switch (component) {
+      case 'quiz':
+        console.log({ blok });
+        return `<nk-quiz question="${blok.question}" answers='${JSON.stringify(blok.answers)}' correct="${
+          blok.correct_answer
+        }"></nk-quiz>`;
+        break;
+      case 'contact_form':
+        return `<a href="mailto:${blok.mail}">Mail me at: ${blok.mail}</a>`;
+        break;
+    }
+  };
+  resolver.addNode('blok', (node) => {
+    let html = '';
+
+    node.attrs.body.forEach((blok) => {
+      html += componentResolver(blok.component, blok);
+    });
+
+    return {
+      html: html,
+    };
+  });
+
   export let preview = false;
   export let post: {
     slug: string;

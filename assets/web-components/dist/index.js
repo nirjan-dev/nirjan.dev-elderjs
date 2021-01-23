@@ -488,7 +488,7 @@
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*answers*/ 32) {
-    			 $$invalidate(4, parsedAnswers = JSON.parse(answers));
+    			 $$invalidate(4, parsedAnswers = answers ? JSON.parse(answers) : "");
     		}
     	};
 

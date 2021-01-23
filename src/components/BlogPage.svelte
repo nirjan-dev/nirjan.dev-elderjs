@@ -10,6 +10,9 @@
   import { onMount } from 'svelte';
   const resolver = new RichTextResolver(richTextSchema);
 
+  // TODO: make this dynamic by looking up what components need to be loaded
+  let loadScript = true;
+
   const componentResolver = (component, blok) => {
     switch (component) {
       case 'quiz':
@@ -160,6 +163,14 @@
   }
 </style>
 
+<svelte:head>
+  {#if loadScript}
+    <!-- content here -->
+    <link rel="preload" href="/web-components/dist/index.js" as="script" />
+    <script src="/web-components/dist/index.js">
+    </script>
+  {/if}
+</svelte:head>
 <Banner title={post.name} subtitle={`Last updated: ${DateFormatter(post.published_at)}`} />
 <Container isNarrow={true}>
   <Image {JPEGSrcset} {placeholder} {alt} {src} {WebPSrcset} />

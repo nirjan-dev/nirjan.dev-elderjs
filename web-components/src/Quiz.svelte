@@ -3,7 +3,7 @@
   export let answers;
   export let correct;
 
-  $: parsedAnswers = JSON.parse(answers);
+  $: parsedAnswers = answers ? JSON.parse(answers) : '';
 
   let showAnswer = false;
   let isCorrect = false;

@@ -2,9 +2,21 @@
   import Banner from '../../components/Banner.svelte';
   import Container from '../../components/Container.svelte';
   import { DateFormatter } from '../../utils/dateFormatter';
+  import RichTextResolver from 'storyblok-js-client/dist/rich-text-resolver.es';
 
-  export let data; // data is mainly being populated from the /plugins/edlerjs-plugin-markdown/index.js
-  const { html, frontmatter } = data;
+  export let data: {
+    post: {
+      slug: string;
+      name: string;
+      published_at: string;
+      content: {
+        excerpt: string;
+        body: string;
+      };
+    };
+  };
+  const { post } = data;
+  const resolver = new RichTextResolver();
 </script>
 
 <style lang="scss" global>
@@ -48,24 +60,24 @@
   }
 </style>
 
-<Banner title={frontmatter.title} subtitle={`Last updated: ${DateFormatter(frontmatter.date)}`} />
+<Banner title={post.name} subtitle={`Last updated: ${DateFormatter(post.published_at)}`} />
 <Container isNarrow={true}>
-  <p class="lead">{frontmatter.excerpt}</p>
+  <p class="lead">{post.content.excerpt}</p>
   <!-- <Img
   fluid={frontmatter.cover.childImageSharp.fluid}
-  alt={frontmatter.title}
+  alt={post.name}
   css={theme => ({ margin: `${theme.spacing[2]} auto` })}
 ></Img> -->
 
   <article class="post">
-  {@html html}
-</article>
+    {@html resolver.render(post.content.body)}
+  </article>
 
   <section class="share-links">
     <ul class="share-links__list">
       <li>
         <a
-          href={`https://twitter.com/search?q=${encodeURIComponent('https://www.studiodagger.com/' + frontmatter.slug)}`}
+          href={`https://twitter.com/search?q=${encodeURIComponent('https://www.studiodagger.com/' + post.slug)}`}
           target="_blank"
           rel="noopener noreferrer">
           Discuss on Twitter
@@ -73,7 +85,7 @@
       </li>
       <li>
         <a
-          href={`https://twitter.com/intent/tweet?url=https://www.studiodagger.com/${frontmatter.slug}&text=${frontmatter.title} by @nk13_codes`}
+          href={`https://twitter.com/intent/tweet?url=https://www.studiodagger.com/${post.slug}&text=${post.name} by @nk13_codes`}
           target="_blank"
           rel="noopener noreferrer">
           Share on Twitter
@@ -81,7 +93,7 @@
       </li>
       <li>
         <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=https://studiodagger.com/${frontmatter.slug}`}
+          href={`https://www.facebook.com/sharer/sharer.php?u=https://studiodagger.com/${post.slug}`}
           target="_blank"
           rel="noopener noreferrer">
           Share on Facebook

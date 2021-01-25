@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const fs = require('fs-extra');
 const os = require('os');
+const StoryblokClient = require('storyblok-js-client');
 
 /**
  * Hooks! 
@@ -62,6 +63,33 @@ const hooks = [
           );
         }
       });
+    },
+  },
+
+  {
+    hook: 'bootstrap',
+    name: 'populateDataForAllRequests',
+    description: 'Fetch data from storyblok.',
+    priority: 50,
+    run: async ({ data }) => {
+      let Storyblok = new StoryblokClient({
+        accessToken: 'IOjlPrsDjUHGJbuooR5TQQtt',
+      });
+      let posts;
+      try {
+        posts = await Storyblok.getAll('cdn/stories', {
+          starts_with: 'blog/',
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+      return {
+        data: {
+          ...data,
+          posts: posts,
+        },
+      };
     },
   },
 

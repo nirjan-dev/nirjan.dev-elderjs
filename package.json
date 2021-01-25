@@ -22,8 +22,7 @@
   "dependencies": {
     "@elderjs/elderjs": "^1.2.4",
     "@elderjs/plugin-browser-reload": "^0.1.21",
-    "@elderjs/plugin-images": "^0.1.21",
-    "@elderjs/plugin-markdown": "^0.1.21",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -38,6 +37,7 @@
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
     "sirv": "^1.0.10",
+    "storyblok-js-client": "^3.3.1",
     "svelte": "^3.31.0",
     "svelte-icons": "^2.1.0",
     "svelte-preprocess": "^4.6.1",

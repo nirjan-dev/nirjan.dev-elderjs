@@ -4,16 +4,14 @@
 
   import { DateFormatter } from '../../utils/dateFormatter';
   export let data: {
-    markdown: {
-      blog: {
-        slug: string;
-        frontmatter: {
-          title: string;
-          date: string;
-          excerpt: string;
-        };
-      }[];
-    };
+    posts: {
+      slug: string;
+      name: string;
+      published_at: string;
+      content: {
+        excerpt: string;
+      };
+    }[];
   };
   export let helpers: {
     permalinks: {
@@ -59,13 +57,13 @@
 <Container>
   <section class="posts">
     <ul class="posts__list">
-      {#each data.markdown.blog as blog}
+      {#each data.posts as post}
         <li class="posts__list-item">
           <h3 class="posts__title">
-            <a class="posts__link" href={helpers.permalinks.blog({ slug: blog.slug })}>{blog.frontmatter.title}</a>
+            <a class="posts__link" href={helpers.permalinks.blog({ slug: post.slug })}>{post.name}</a>
           </h3>
-          <p><small class="posts__date"> {DateFormatter(blog.frontmatter.date)} </small></p>
-          <p class="posts__excerpt">{blog.frontmatter.excerpt}</p>
+          <p><small class="posts__date"> {DateFormatter(post.published_at)} </small></p>
+          <p class="posts__excerpt">{post.content.excerpt}</p>
         </li>
       {/each}
     </ul>

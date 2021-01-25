@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { getImages, getJPEGSrcset, getWebPSrcset, sizes } from '../utils/responsiveImageHelpers';
-  // function that takes in the original img url and generates different sized images
-  export let originalLink = '';
+  export let src = '';
+  export let JPEGSrcset = '';
+  export let WebPSrcset = '';
+  export let placeholder = '';
   export let alt = '';
-  const { JPEGImages, webPImages, placeholder } = getImages(originalLink, sizes);
+  export let className = '';
 </script>
 
 <style lang="scss">
@@ -45,14 +46,10 @@
   }
 </style>
 
-<div class="ratio-container unknown-ratio-container">
+<div class="ratio-container unknown-ratio-container {className}">
   <picture>
-    <source type="image/webp" data-srcset={getWebPSrcset(webPImages, sizes)} />
-    <source data-srcset={getJPEGSrcset(JPEGImages, sizes)} />
-    <img
-      class="lazyload blur-up responsive-image"
-      src={placeholder}
-      data-src={JPEGImages[JPEGImages.length - 1]}
-      {alt} />
+    <source type="image/webp" data-srcset={WebPSrcset} />
+    <source data-srcset={JPEGSrcset} />
+    <img class="lazyload blur-up responsive-image" src={placeholder} data-src={src} {alt} />
   </picture>
 </div>

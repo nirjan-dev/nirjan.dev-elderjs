@@ -1,6 +1,5 @@
 <script lang="ts">
   import BlogPage from '../../components/BlogPage.svelte';
-
   export let data: {
     post: {
       slug: string;
@@ -19,4 +18,4 @@
   const { post } = data;
 </script>
 
-<BlogPage {post} />
+<BlogPage hydrate-client={{ post, preview: true }} />

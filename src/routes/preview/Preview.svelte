@@ -1,19 +1,9 @@
 <script lang="ts">
   import BlogPage from '../../components/BlogPage.svelte';
+  import type { Post } from '../../types/post';
+
   export let data: {
-    post: {
-      slug: string;
-      name: string;
-      published_at: string;
-      content: {
-        excerpt: string;
-        body: string;
-        cover: {
-          alt: string;
-          filename: string;
-        };
-      };
-    };
+    post: Post;
   };
   const { post } = data;
 </script>

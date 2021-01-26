@@ -1,18 +1,11 @@
 <script lang="ts">
   import Banner from '../../components/Banner.svelte';
   import Container from '../../components/Container.svelte';
+  import type { Post } from '../../types/post';
 
   import { DateFormatter } from '../../utils/dateFormatter';
   export let data: {
-    posts: {
-      slug: string;
-      name: string;
-      published_at: string;
-      content: {
-        excerpt: string;
-        draft: boolean;
-      };
-    }[];
+    posts: Post[];
   };
   export let helpers: {
     permalinks: {

@@ -7,21 +7,10 @@
   import richTextSchema from '../utils/richTextSchema';
   import { getImages, getJPEGSrcset, getWebPSrcset, sizes } from '../utils/responsiveImageHelpers';
   import { onMount } from 'svelte';
+  import type { Post } from '../types/post';
   const resolver = new RichTextResolver(richTextSchema);
   export let preview = false;
-  export let post: {
-    slug: string;
-    name: string;
-    published_at: string;
-    content: {
-      excerpt: string;
-      body: string;
-      cover: {
-        alt: string;
-        filename: string;
-      };
-    };
-  };
+  export let post: Post;
   // cover image stuff
   const originalLink = post.content.cover.filename;
   const { JPEGImages, webPImages, placeholder } = getImages(originalLink, sizes);

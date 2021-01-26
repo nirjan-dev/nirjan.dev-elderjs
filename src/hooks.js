@@ -73,7 +73,7 @@ const hooks = [
     priority: 50,
     run: async ({ data }) => {
       let Storyblok = new StoryblokClient({
-        accessToken: 'IOjlPrsDjUHGJbuooR5TQQtt',
+        accessToken: '8Cyi7Oh7W9w5bU5re7zM0gtt',
       });
       let posts;
       try {

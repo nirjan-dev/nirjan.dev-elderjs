@@ -10,6 +10,7 @@
       published_at: string;
       content: {
         excerpt: string;
+        draft: boolean;
       };
     }[];
   };
@@ -18,6 +19,10 @@
       blog: ({ slug: string }) => string;
     };
   };
+
+  let { posts } = data;
+
+  posts = posts.filter((post) => !post.content.draft);
 </script>
 
 <style lang="scss">
@@ -57,7 +62,7 @@
 <Container>
   <section class="posts">
     <ul class="posts__list">
-      {#each data.posts as post}
+      {#each posts as post}
         <li class="posts__list-item">
           <h3 class="posts__title">
             <a class="posts__link" href={helpers.permalinks.blog({ slug: post.slug })}>{post.name}</a>

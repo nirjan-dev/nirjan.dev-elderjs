@@ -1,14 +1,25 @@
-const { getImages, getJPEGSrcset, getWebPSrcset, sizes } = require('./responsiveImageHelpers');
+const {
+  getImages,
+  getJPEGSrcset,
+  getWebPSrcset,
+  sizes,
+  getDimensions,
+  getPaddingBottomValue,
+} = require('./responsiveImageHelpers');
 
 const getResponsiveImage = function (node) {
   const originalLink = node.attrs.src;
   const { JPEGImages, webPImages, placeholder } = getImages(originalLink, sizes);
+  const dimensions = getDimensions(originalLink);
+  const pdBottomValue = getPaddingBottomValue(dimensions);
+
   return {
     tag: [
       {
         tag: 'div',
         attrs: {
           class: 'ratio-container unknown-ratio-container',
+          style: `--padding-bottom: ${pdBottomValue}`,
         },
       },
       {

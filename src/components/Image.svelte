@@ -1,10 +1,14 @@
 <script lang="ts">
+  import { getDimensions, getPaddingBottomValue } from '../utils/responsiveImageHelpers';
   export let src = '';
   export let JPEGSrcset = '';
   export let WebPSrcset = '';
   export let placeholder = '';
   export let alt = '';
   export let className = '';
+
+  const dimensions = getDimensions(src);
+  const pdBottomValue = getPaddingBottomValue(dimensions);
 </script>
 
 <style lang="scss">
@@ -25,7 +29,7 @@
       height: 0;
       width: 100%;
       /* 16:9 = 56.25% = calc(9 / 16 * 100%) */
-      padding-bottom: 56.25%;
+      padding-bottom: var(--padding-bottom, 56.25%);
       content: '';
     }
   }
@@ -46,7 +50,7 @@
   }
 </style>
 
-<div class="ratio-container unknown-ratio-container {className}">
+<div class="ratio-container unknown-ratio-container {className}" style="--padding-bottom: {pdBottomValue}">
   <picture>
     <source type="image/webp" data-srcset={WebPSrcset} />
     <source data-srcset={JPEGSrcset} />

@@ -35,9 +35,26 @@ function getJPEGSrcset(JPEGImages, sizes) {
   return imgResolutions.join(', ');
 }
 
+function getDimensions(src) {
+  const matches = src.match(/f\/\d+\/(\d+x\d+)/);
+
+  const dimensions = matches[1].split('x');
+
+  // dimensions = ["1920", "1080"]
+  return dimensions;
+}
+
+function getPaddingBottomValue(dimensions) {
+  const [width, height] = dimensions;
+
+  return `${Math.floor((parseInt(height) / parseInt(width)) * 100)}%`;
+}
+
 module.exports = {
   sizes,
   getImages,
   getWebPSrcset,
   getJPEGSrcset,
+  getDimensions,
+  getPaddingBottomValue,
 };

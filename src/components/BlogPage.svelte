@@ -114,6 +114,8 @@
 
 <Banner title={post.name} subtitle={`Last updated: ${DateFormatter(post.published_at)}`} />
 <Container isNarrow={true}>
+  <p class="lead">{post.content.excerpt}</p>
+
   <Image className="post__cover-img" {JPEGSrcset} {placeholder} {alt} {src} {WebPSrcset} />
 
   <article class="post">

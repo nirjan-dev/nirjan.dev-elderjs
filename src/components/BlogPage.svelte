@@ -12,12 +12,17 @@
   export let preview = false;
   export let post: Post;
   // cover image stuff
-  const originalLink = post.content.cover.filename;
-  const { JPEGImages, webPImages, placeholder } = getImages(originalLink, sizes);
-  const JPEGSrcset = getJPEGSrcset(JPEGImages, sizes);
-  const WebPSrcset = getWebPSrcset(webPImages, sizes);
-  const src = JPEGImages[JPEGImages.length - 1];
-  const alt = post.content.cover.alt;
+  let coverImage;
+  if (post.content.cover.filename) {
+    coverImage = {};
+    coverImage.originalLink = post.content.cover.filename;
+    const { JPEGImages, webPImages, placeholder } = getImages(coverImage.originalLink, sizes);
+    coverImage.JPEGSrcset = getJPEGSrcset(JPEGImages, sizes);
+    coverImage.WebPSrcset = getWebPSrcset(webPImages, sizes);
+    coverImage.src = JPEGImages[JPEGImages.length - 1];
+    coverImage.alt = post.content.cover.alt;
+  }
+
   // live preview stuff
   onMount(() => {
     if (preview === true) {
@@ -116,7 +121,16 @@
 <Container isNarrow={true}>
   <p class="lead">{post.content.excerpt}</p>
 
-  <Image className="post__cover-img" {JPEGSrcset} {placeholder} {alt} {src} {WebPSrcset} />
+  {#if coverImage}
+    <!-- content here -->
+    <Image
+      className="post__cover-img"
+      JPEGSrcset={coverImage.JPEGSrcset}
+      placeholder={coverImage.placeholder}
+      alt={coverImage.alt}
+      src={coverImage.src}
+      WebPSrcset={coverImage.WebPSrcset} />
+  {/if}
 
   <article class="post">
     {@html resolver.render(post.content.body)}

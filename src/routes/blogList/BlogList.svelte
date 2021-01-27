@@ -60,7 +60,7 @@
           <h3 class="posts__title">
             <a class="posts__link" href={helpers.permalinks.blog({ slug: post.slug })}>{post.name}</a>
           </h3>
-          <p><small class="posts__date"> {DateFormatter(post.published_at)} </small></p>
+          <p><small class="posts__date"> {DateFormatter(post.first_published_at)} </small></p>
           <p class="posts__excerpt">{post.content.excerpt}</p>
         </li>
       {/each}

@@ -63,7 +63,7 @@
       });
   };
 
-  function encodeForm(data) {
+  function encodeForm(data: { [key: string]: string }) {
     return Object.keys(data)
       .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
       .join('&');

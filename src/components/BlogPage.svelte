@@ -6,13 +6,24 @@
   import Image from './Image.svelte';
   import richTextSchema from '../utils/richTextSchema';
   import { getImages, getJPEGSrcset, getWebPSrcset, sizes } from '../utils/responsiveImageHelpers';
-  import { onMount } from 'svelte';
+  import { onMount, tick } from 'svelte';
   import type { Post } from '../types/post';
+  import type { SEOProps } from '../types/seoProps';
+  import Seo from './SEO.svelte';
   const resolver = new RichTextResolver(richTextSchema);
   export let preview = false;
   export let post: Post;
   // cover image stuff
-  let coverImage;
+  let coverImage:
+    | undefined
+    | {
+        originalLink?: string;
+        JPEGSrcset?: string;
+        WebPSrcset?: string;
+        src?: string;
+        alt?: string;
+        placeholder?: string;
+      };
   if (post.content.cover.filename) {
     coverImage = {};
     coverImage.originalLink = post.content.cover.filename;
@@ -21,11 +32,14 @@
     coverImage.WebPSrcset = getWebPSrcset(webPImages, sizes);
     coverImage.src = JPEGImages[JPEGImages.length - 1];
     coverImage.alt = post.content.cover.alt;
+    coverImage.placeholder = placeholder;
   }
 
   // live preview stuff
   onMount(() => {
     if (preview === true) {
+      Prism.highlightAll();
+
       const storyblokBridge = document.createElement('script');
       const token = 'IOjlPrsDjUHGJbuooR5TQQtt';
       storyblokBridge.src = `//app.storyblok.com/f/storyblok-latest.js?t=${token}`;
@@ -43,11 +57,31 @@
         window.storyblok.on(['input'], (payload) => {
           console.log('changed sometrhing');
           post = payload.story;
+          tick().then(() => Prism.highlightAll());
         });
       };
       document.head.append(storyblokBridge);
     }
   });
+
+  const { seo } = post.content;
+  const seoProps: SEOProps = {
+    title: seo.title ?? post.name,
+    description: seo.description ?? post.content.excerpt,
+    pathname: post.slug,
+    image: post.content.cover.filename,
+
+    ogTitle: seo.og_title ?? post.name,
+    ogImage: seo.og_image ?? post.content.cover.filename,
+    ogDescription: seo.og_description ?? post.content.excerpt,
+    ogType: 'article',
+
+    twitterTitle: seo.twitter_title ?? post.name,
+    twitterDescription: seo.twitter_description ?? post.content.excerpt,
+    twitterImage: seo.twitter_image ?? post.content.cover.filename,
+
+    disableIndex: preview,
+  };
 </script>
 
 <style lang="scss" global>
@@ -116,6 +150,10 @@
     }
   }
 </style>
+
+<svelte:head>
+  <Seo options={seoProps} />
+</svelte:head>
 
 <Banner title={post.name} subtitle={`Last updated: ${DateFormatter(post.published_at)}`} />
 <Container isNarrow={true}>

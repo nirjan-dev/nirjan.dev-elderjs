@@ -1,5 +1,9 @@
 <script lang="ts">
   import Container from '../../components/Container.svelte';
+  import Seo from '../../components/SEO.svelte';
+  import type { SEOProps } from '../../types/seoProps';
+
+  const seoProps: SEOProps = {};
 </script>
 
 <style lang="scss">
@@ -15,7 +19,6 @@
       max-width: 60ch;
       margin: var(--spacing-1) 0;
     }
- 
   }
 
   .contact-btn {
@@ -40,7 +43,7 @@
 </style>
 
 <svelte:head>
-  <title>Elder.js Template: Home</title>
+  <Seo options={seoProps} />
 </svelte:head>
 
 <section>

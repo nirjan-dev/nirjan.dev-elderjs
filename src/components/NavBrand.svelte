@@ -1,5 +1,9 @@
 <script lang="ts">
-  export let helpers;
+  export let helpers: {
+    permalinks: {
+      home: (options: { slug: string }) => string;
+    };
+  };
 </script>
 
 <style lang="scss">
@@ -14,6 +18,6 @@
   }
 </style>
 
-<a href={helpers.permalinks.home({slug: '/'})}>
+<a href={helpers.permalinks.home({ slug: '/' })}>
   <img width="205" height="70" src="/img/logo.svg" alt="Studio Dagger Logo" />
 </a>

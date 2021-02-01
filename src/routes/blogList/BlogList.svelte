@@ -1,7 +1,9 @@
 <script lang="ts">
   import Banner from '../../components/Banner.svelte';
   import Container from '../../components/Container.svelte';
+  import Seo from '../../components/SEO.svelte';
   import type { Post } from '../../types/post';
+  import type { SEOProps } from '../../types/seoProps';
 
   import { DateFormatter } from '../../utils/dateFormatter';
   export let data: {
@@ -16,6 +18,13 @@
   let { posts } = data;
 
   posts = posts.filter((post) => !post.content.draft);
+
+  const seoProps: SEOProps = {
+    title: `Blog | Nirjan Khadka's web dev blog`,
+    description:
+      'I write about different web technologies like HTML, CSS, JavaScript, Svelte, Vue, Storybook, Node.js, SVG, WebGL, web animation and best coding practices',
+    pathname: '/blog',
+  };
 </script>
 
 <style lang="scss">
@@ -49,6 +58,10 @@
     }
   }
 </style>
+
+<svelte:head>
+  <Seo options={seoProps} />
+</svelte:head>
 
 <Banner title="My Blog" />
 

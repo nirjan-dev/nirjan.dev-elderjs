@@ -1,5 +1,11 @@
 <script lang="ts">
-  export let helpers;
+  export let helpers: {
+    permalinks: {
+      home: (option: { slug: string }) => string;
+      contact: (option: { slug: string }) => string;
+      blogList: (option: { slug: string }) => string;
+    };
+  };
 
   export let navItems = [
     {

@@ -2,8 +2,8 @@
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compileOnSave": true,
   "compilerOptions": {
-    "target": "es2020",
-    "lib": ["es2020", "DOM"],
+    "target": "ES6",
+    "lib": ["ES6", "DOM"],
     "allowJs": true,
     "outDir": "build",
     "strict": false,

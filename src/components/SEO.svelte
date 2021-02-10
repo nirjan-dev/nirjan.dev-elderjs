@@ -28,6 +28,99 @@
   const twitterImage = options.twitterImage ?? image;
 
   const disableIndex = options.disableIndex ?? true;
+
+  const jsonLd = (content) => `<${'script'} type="application/ld+json">${JSON.stringify(content)}</${'script'}>`;
+
+  const jsonLdGraph: any[] = [
+    {
+      '@context': 'http://www.schema.org',
+      '@type': 'person',
+      name: 'Nirjan Khadka',
+      jobTitle: 'developer',
+      gender: 'male',
+      url: 'https://nirjan.dev',
+      sameAs: [
+        'https://www.instagram.com/nirjan.dev',
+        'https://www.linkedin.com/nirjankhadka',
+        'https://twitter.com/nirjan.dev',
+        'https://codepen.io/nk13_codes',
+        'https://github.com/NK-WebDev',
+      ],
+      image: 'https://a.storyblok.com/f/101845/400x400/8bf3a1d122/6kqa90du_400x400.jpg',
+      email: 'hi@nirjan.dev',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://nirjan.dev/#website',
+      url: 'https://nirjan.dev/',
+      name: 'nirjan.dev',
+      description: `I design and develop websites and applications that are blazing fast, user friendly, optimized and accessible to everyone. I also love sharing what I've learnt about web development and UI/UX. I specialize in modern JavaScript, CSS, HTML, Vue, Svelte and Node.js`,
+      publisher: {
+        '@id': 'https://nirjan.dev/#person',
+      },
+      inLanguage: 'en-US',
+    },
+
+    {
+      '@type': 'WebPage',
+      '@id': 'https://nirjan.dev' + pathname + '#webpage',
+      url: 'https://nirjan.dev' + pathname,
+      name: title,
+      isPartOf: {
+        '@id': 'https://nirjan.dev/#website',
+      },
+      inLanguage: 'en-US',
+      description: description,
+    },
+  ];
+
+  if (options.ogType === 'article') {
+    jsonLdGraph[2]['potentialAction'] = [
+      {
+        '@type': 'ReadAction',
+        target: ['https://nirjan.dev' + pathname],
+      },
+    ];
+
+    jsonLdGraph[2]['primaryImageOfPage'] = {
+      '@id': 'https://nirjan.dev' + pathname + '#primaryimage',
+    };
+    jsonLdGraph.push({
+      '@type': 'ImageObject',
+      '@id': 'https://nirjan.dev' + pathname + '#primaryimage',
+      inLanguage: 'en-US',
+      url: image,
+      width: 700,
+      height: 394,
+      caption: title,
+    });
+
+    jsonLdGraph.push({
+      '@type': 'Article',
+      '@id': 'https://nirjan.dev' + pathname + '#article',
+      isPartOf: {
+        '@id': 'https://nirjan.dev' + pathname + '#webpage',
+      },
+      author: {
+        '@id': 'https://nirjan.dev' + pathname + '#person',
+      },
+      headline: title,
+      datePublished: options.datePublished,
+      dateModified: options.dateModified,
+      commentCount: 0,
+      mainEntityOfPage: {
+        '@id': 'https://nirjan.dev' + pathname + '#webpage',
+      },
+      publisher: {
+        '@id': 'https://nirjan.dev/#organization',
+      },
+      image: {
+        '@id': 'https://nirjan.dev' + pathname + '#primaryimage',
+      },
+      keywords: options.keywords,
+      inLanguage: 'en-US',
+    });
+  }
 </script>
 
 <title>{title}</title>
@@ -58,3 +151,5 @@
   <meta name="bingbot" content="noindex" />
   <meta name="googlebot" content="noindex" />
 {/if}
+
+{@html jsonLd({ '@context': 'http://schema.org', '@graph': jsonLdGraph })}

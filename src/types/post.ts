@@ -22,4 +22,5 @@ export interface Post {
       twitter_description?: string;
     };
   };
+  tag_list?: string[];
 }

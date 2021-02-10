@@ -14,4 +14,8 @@ export interface SEOProps {
   twitterImage?: string;
 
   disableIndex?: boolean;
+
+  datePublished?: string;
+  dateModified?: string;
+  keywords?: string;
 }

@@ -81,6 +81,9 @@
     twitterImage: seo.twitter_image ?? post.content.cover.filename,
 
     disableIndex: preview,
+    dateModified: post.published_at,
+    datePublished: post.first_published_at,
+    keywords: post.tag_list.join(','),
   };
 </script>
 

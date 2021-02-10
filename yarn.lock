@@ -1204,6 +1204,13 @@
   dependencies:
     socket.io "^2.3.0"
 
+"@elderjs/plugin-sitemap@^0.1.21":
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/@elderjs/plugin-sitemap/-/plugin-sitemap-0.1.21.tgz#dbe775665c034ebb06cc086915fdf321b55d5294"
+  integrity sha512-RrtUGoxiKgjZt650kL2XawCckMzIJSaxcHxoJdTMWiM9B4olEBUAt7TzX8vndMkarPlIk+goLhMaLXFPKK8Yuw==
+  dependencies:
+    fs-extra "^9.0.1"
+
 "@elderjs/shortcodes@^1.0.6":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@elderjs/shortcodes/-/shortcodes-1.0.7.tgz#2f2e5526311ebaaf5b3e69a64c53cb65afd8376c"

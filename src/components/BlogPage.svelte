@@ -68,7 +68,7 @@
   const seoProps: SEOProps = {
     title: seo.title ?? post.name,
     description: seo.description ?? post.content.excerpt,
-    pathname: post.slug,
+    pathname: `/${post.slug}`,
     image: post.content.cover.filename,
 
     ogTitle: seo.og_title ?? post.name,

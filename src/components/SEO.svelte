@@ -131,6 +131,7 @@
   rel="stylesheet" />
 <meta name="description" content={description} />
 <meta name="image" content={image} />
+<link rel="”canonical”" href={url} />
 
 <!-- OpenGraph   -->
 <meta property="og:url" content={url} />

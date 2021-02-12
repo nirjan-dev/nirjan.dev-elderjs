@@ -124,11 +124,6 @@
 </script>
 
 <title>{title}</title>
-<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="true" />
-<link
-  href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Merriweather:900&display=swap"
-  rel="stylesheet" />
 <meta name="description" content={description} />
 <meta name="image" content={image} />
 <link rel="”canonical”" href={url} />

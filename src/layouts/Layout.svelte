@@ -9,17 +9,14 @@
 </style>
 
 <svelte:head>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&family=Merriweather:wght@900&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="/prismjs/prism.css" />
+  <link rel="stylesheet" href="/prism/prism.css" />
   <script defer src="/lazysizes/lazysizes.min.js">
   </script>
   <script defer src="/lazysizes/ls.blur-up.min.js">
   </script>
   <script defer src="/lazysizes/ls.native-loading.min.js">
   </script>
-  <script defer src="/prismjs/prism.js">
+  <script defer src="/prism/prism.js">
   </script>
   <link rel="stylesheet" href="/style.css" />
 </svelte:head>

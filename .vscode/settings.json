@@ -6,5 +6,8 @@
     "terminal.foreground": "#00fd61",
     "terminal.ansiGreen": "#ff0000"
   },
-  "peacock.color": "#060802"
+  "peacock.color": "#060802",
+  "conventionalCommits.scopes": [
+    "form"
+  ]
 }

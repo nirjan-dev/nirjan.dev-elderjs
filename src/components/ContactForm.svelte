@@ -5,13 +5,16 @@
   let contactForm = {
     name: '',
     email: '',
-    description: '',
+    message: '',
+    subject: 'StaticForms - Contact Form',
+    honeypot: '', // if any value received in this field, form submission will be ignored.
+    accessKey: '3135ae1f-c049-46c6-8ab1-182225c206c1', // get your access key from https://www.staticforms.xyz
   };
 
   let errors = {
     name: null,
     email: null,
-    description: null,
+    message: null,
   };
 
   let formState: 'UNSENT' | 'SENDING' | 'SENT' = 'UNSENT';
@@ -19,20 +22,20 @@
   const validateForm = () => {
     // reset form errors and validate again
 
-    errors.name = errors.description = errors.email = null;
+    errors.name = errors.message = errors.email = null;
 
     if (contactForm.name.length === 0) {
       errors.name = 'Name is required';
     }
-    if (contactForm.description.length < 10) {
-      errors.description = 'Description must be at least 10 characters';
+    if (contactForm.message.length < 10) {
+      errors.message = 'message must be at least 10 characters';
     }
     if (!isEmail(contactForm.email)) {
       errors.email = 'Email is not valid';
     }
     // elderjs needs an LHS assignment for reactivity to work
     errors = { ...errors };
-    if (contactForm.name.length < 5 || contactForm.description.length < 10 || !isEmail(contactForm.email)) {
+    if (contactForm.name.length < 5 || contactForm.message.length < 10 || !isEmail(contactForm.email)) {
       return false;
     } else {
       return true;
@@ -44,17 +47,19 @@
       return;
     }
     formState = 'SENDING';
-    fetch('/', {
+    fetch('https://api.staticforms.xyz/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodeForm({
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
         'form-name': 'contact',
         ...contactForm,
       }),
     })
-      .then(() => {
+      .then((res) => {
+        if (!res || res.status !== 200) {
+          throw new Error('form submission api error');
+        }
         formState = 'SENT';
-        alert('Success!');
       })
       .catch((error) => {
         console.error(error);
@@ -62,12 +67,6 @@
         formState = 'UNSENT';
       });
   };
-
-  function encodeForm(data: { [key: string]: string }) {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
-  }
 </script>
 
 <style lang="scss">
@@ -187,12 +186,11 @@
     class:is-invisible={formState !== 'UNSENT'}
     class="form grid-wrapper__item"
     name="contact"
-    action="/contact"
+    action="https://api.staticforms.xyz/submit"
     method="post"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
     on:submit|preventDefault={handleSubmit}>
-    <input type="hidden" name="form-name" value="contact" />
+    <input type="text" name="honeypot" style="display: none;" bind:value={contactForm.honeypot} />
+    <!-- Optional -->
     <div hidden><label> Don’t fill this out: <input name="bot-field" /> </label></div>
     <div class="form__group">
       <input
@@ -223,13 +221,13 @@
     <div class="form__group">
       <textarea
         class="form__field with-min-height"
-        bind:value={contactForm.description}
-        name="description"
-        id="description"
-        placeholder="Project Description" />
-      <label class="form__label" for="description">Description</label>
-      {#if errors.description}
-        <p class="form__error-msg">{errors.description}</p>
+        bind:value={contactForm.message}
+        name="message"
+        id="message"
+        placeholder="Your message" />
+      <label class="form__label" for="message">message</label>
+      {#if errors.message}
+        <p class="form__error-msg">{errors.message}</p>
       {/if}
     </div>
     <div class="form__group"><button class="form__action-btn" type="submit">Send</button></div>

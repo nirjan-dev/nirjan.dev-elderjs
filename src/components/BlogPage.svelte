@@ -43,9 +43,7 @@
       const storyblokBridge = document.createElement('script');
       const token = 'IOjlPrsDjUHGJbuooR5TQQtt';
       storyblokBridge.src = `//app.storyblok.com/f/storyblok-latest.js?t=${token}`;
-      console.log('in preview mode');
       storyblokBridge.onload = () => {
-        console.log('loaded bridge');
         window.storyblok.init({
           accessToken: token,
         });
@@ -55,7 +53,6 @@
           }
         });
         window.storyblok.on(['input'], (payload) => {
-          console.log('changed sometrhing');
           post = payload.story;
           tick().then(() => Prism.highlightAll());
         });

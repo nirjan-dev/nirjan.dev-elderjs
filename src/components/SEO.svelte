@@ -27,7 +27,7 @@
   const twitterDescription = options.twitterDescription ?? description;
   const twitterImage = options.twitterImage ?? image;
 
-  const disableIndex = options.disableIndex ?? true;
+  const disableIndex = options.disableIndex ?? false;
 
   const jsonLd = (content) => `<${'script'} type="application/ld+json">${JSON.stringify(content)}</${'script'}>`;
 

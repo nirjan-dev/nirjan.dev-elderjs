@@ -13,7 +13,7 @@
     "eslint": "eslint --ext .js .",
     "eslint:fix": "eslint --fix --ext .js .",
     "prettier:svelte": "prettier --write --plugin-search-dir=. ./**/*.svelte",
-    "type-check": "svelte-check","build:critical": "ELDER_REBUILD_CRITICAL_PATH=true node ./src/build"
+    "type-check": "svelte-check"
   },
   "type": "commonjs",
   "engines": {
@@ -22,7 +22,6 @@
   "dependencies": {
     "@elderjs/elderjs": "^1.2.4",
     "@elderjs/plugin-browser-reload": "^0.1.21",
-    "@elderjs/plugin-critical-path-css": "^0.1.21",
     "@elderjs/plugin-sitemap": "^0.1.21",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",

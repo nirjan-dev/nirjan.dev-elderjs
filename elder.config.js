@@ -3,6 +3,7 @@ module.exports = {
   srcDir: 'src',
   distDir: 'public',
   rootDir: process.cwd(),
+  css: 'inline',
   build: {},
   server: {
     prefix: '',
@@ -40,29 +41,42 @@ module.exports = {
       },
       swap: true,
     },
-    '@elderjs/plugin-critical-path-css': {
-      rebuild: false, // set to true to rebuild the critical path css on next build. NOTE: completely overwrites allRequests.
-      folder: `./src/assets/critical/`, // relative to root of the project.
-      requests: false, // used to specify the specific requests you want used for critical path css generation.
-      disable: false, // if for some reason you don't want the critical path css added when the file exists. Also disables building.
-      critical: {
-        // settings here: https://github.com/addyosmani/critical
-        penthouse: {
-          forceInclude: [], // you can force include styles here '.btn' for example
-          keepLargerMediaQueries: true,
-        },
-        dimensions: [
-          {
-            height: 500,
-            width: 300,
-          },
-          {
-            height: 900,
-            width: 1280,
-          },
-        ],
-      },
-    },
+    // '@elderjs/plugin-critical-path-css': {
+    //   rebuild: false, // set to true to rebuild the critical path css on next build. NOTE: completely overwrites allRequests.
+    //   folder: `./src/assets/critical/`, // relative to root of the project.
+    //   requests: false, // used to specify the specific requests you want used for critical path css generation.
+    //   disable: false, // if for some reason you don't want the critical path css added when the file exists. Also disables building.
+    //   critical: {
+    //     // settings here: https://github.com/addyosmani/critical
+    //     penthouse: {
+    //       forceInclude: [], // you can force include styles here '.btn' for example
+    //       keepLargerMediaQueries: true,
+    //     },
+    //     dimensions: [
+    //       {
+    //         height: 500,
+    //         width: 600,
+    //       },
+    //       {
+    //         height: 500,
+    //         width: 640,
+    //       },
+
+    //       {
+    //         height: 1080,
+    //         width: 800,
+    //       },
+    //       {
+    //         height: 900,
+    //         width: 1280,
+    //       },
+    //       {
+    //         height: 1450,
+    //         width: 2560,
+    //       },
+    //     ],
+    //   },
+    // },
   },
   shortcodes: { closePattern: '}}', openPattern: '{{' },
 };

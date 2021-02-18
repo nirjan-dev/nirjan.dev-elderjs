@@ -63,25 +63,27 @@
 
   const { seo } = post.content;
   const seoProps: SEOProps = {
-    title: seo.title ?? post.name,
-    description: seo.description ?? post.content.excerpt,
+    title: seo.title || post.name,
+    description: seo.description || post.content.excerpt,
     pathname: `/${post.slug}`,
     image: post.content.cover.filename,
 
-    ogTitle: seo.og_title ?? post.name,
-    ogImage: seo.og_image ?? post.content.cover.filename,
-    ogDescription: seo.og_description ?? post.content.excerpt,
+    ogTitle: seo.og_title || post.name,
+    ogImage: seo.og_image || post.content.cover.filename,
+    ogDescription: seo.og_description || post.content.excerpt,
     ogType: 'article',
 
-    twitterTitle: seo.twitter_title ?? post.name,
-    twitterDescription: seo.twitter_description ?? post.content.excerpt,
-    twitterImage: seo.twitter_image ?? post.content.cover.filename,
+    twitterTitle: seo.twitter_title || post.name,
+    twitterDescription: seo.twitter_description || post.content.excerpt,
+    twitterImage: seo.twitter_image || post.content.cover.filename,
 
     disableIndex: preview,
     dateModified: post.published_at,
     datePublished: post.first_published_at,
     keywords: post.tag_list.join(','),
   };
+
+  console.log({ seoProps });
 </script>
 
 <style lang="scss" global>
@@ -152,6 +154,15 @@
 </style>
 
 <svelte:head>
+  <link rel="stylesheet" href="/prism/prism.css" />
+  <script defer src="/lazysizes/lazysizes.min.js">
+  </script>
+  <script defer src="/lazysizes/ls.blur-up.min.js">
+  </script>
+  <script defer src="/lazysizes/ls.native-loading.min.js">
+  </script>
+  <script defer src="/prism/prism.js">
+  </script>
   <Seo options={seoProps} />
 </svelte:head>
 

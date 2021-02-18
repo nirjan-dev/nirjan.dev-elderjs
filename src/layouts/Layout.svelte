@@ -16,19 +16,26 @@
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#845ec2" />
   <meta name="msapplication-TileColor" content="#fbeaff" />
   <meta name="theme-color" content="#fbeaff" />
-  <script defer src="/lazysizes/lazysizes.min.js">
-  </script>
-  <script defer src="/lazysizes/ls.blur-up.min.js">
-  </script>
-  <script defer src="/lazysizes/ls.native-loading.min.js">
-  </script>
-  <script defer src="/prism/prism.js">
-  </script>
-  <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="/style.css" /></noscript>
+  <link
+    rel="preload"
+    href="/u-4n0qyriQwlOrhSvowK_l52_wFZWMf6.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous" />
+  <link
+    rel="preload"
+    href="/2-cO9IRs1JiJN1FRAMjTN5zd9vgsFF_5asQTb6hZ2JKZou4ViesH.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous" />
+  <link
+    rel="preload"
+    href="/2-cO9IRs1JiJN1FRAMjTN5zd9vgsFF_5asQTb6hZ2JKZRekViesH.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous" />
 
-  <link rel="stylesheet" href="/prism/prism.css" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="/prism/prism.css" /></noscript>
+  <link rel="stylesheet" href="/style.css" />
 </svelte:head>
 <Header {helpers} />
 <main>

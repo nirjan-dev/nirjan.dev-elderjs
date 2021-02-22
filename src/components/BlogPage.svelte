@@ -82,8 +82,6 @@
     datePublished: post.first_published_at,
     keywords: post.tag_list.join(','),
   };
-
-  console.log({ seoProps });
 </script>
 
 <style lang="scss" global>
@@ -146,6 +144,10 @@
   }
   .share-links {
     margin: var(--spacing-1);
+    a {
+      padding: var(--spacing-0) 0;
+      display: inline-block;
+    }
     &__list {
       list-style-type: none;
       padding: 0;
@@ -189,7 +191,7 @@
     <ul class="share-links__list">
       <li>
         <a
-          href={`https://twitter.com/search?q=${encodeURIComponent('https://www.studiodagger.com/' + post.slug)}`}
+          href={`https://twitter.com/search?q=${encodeURIComponent('https://nirjan.dev/' + post.slug)}`}
           target="_blank"
           rel="noopener noreferrer">
           Discuss on Twitter
@@ -197,7 +199,7 @@
       </li>
       <li>
         <a
-          href={`https://twitter.com/intent/tweet?url=https://www.studiodagger.com/${post.slug}&text=${post.name} by @nk13_codes`}
+          href={`https://twitter.com/intent/tweet?url=https://nirjan.dev/${post.slug}&text=${post.name} by @nk13_codes`}
           target="_blank"
           rel="noopener noreferrer">
           Share on Twitter
@@ -205,7 +207,7 @@
       </li>
       <li>
         <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=https://studiodagger.com/${post.name}`}
+          href={`https://facebook.com/sharer/sharer.php?u=https://nirjan.dev/${post.name}`}
           target="_blank"
           rel="noopener noreferrer">
           Share on Facebook

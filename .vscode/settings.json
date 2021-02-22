@@ -4,7 +4,21 @@
   ],
   "workbench.colorCustomizations": {
     "terminal.foreground": "#00fd61",
-    "terminal.ansiGreen": "#ff0000"
+    "terminal.ansiGreen": "#ff0000",
+    "activityBar.activeBackground": "#25310c",
+    "activityBar.activeBorder": "#1f6180",
+    "activityBar.background": "#25310c",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#1f6180",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.background": "#060802",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#25310c",
+    "titleBar.activeBackground": "#060802",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#06080299",
+    "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.color": "#060802",
   "conventionalCommits.scopes": [

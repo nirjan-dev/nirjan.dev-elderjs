@@ -37,7 +37,7 @@
     color: var(--dark);
     transition: all 300ms ease-out;
     display: inline-block;
-    padding: 0.3em 2em;
+    padding: var(--spacing-1) var(--spacing-2);
     min-width: 5rem;
     &:hover,
     &:active,

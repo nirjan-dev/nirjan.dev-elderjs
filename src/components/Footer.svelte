@@ -1,10 +1,11 @@
 <script lang="ts">
-import Container from "./Container.svelte";
-import IoLogoCodepen from 'svelte-icons/io/IoLogoCodepen.svelte';
-import IoLogoTwitter from 'svelte-icons/io/IoLogoTwitter.svelte';
-import IoLogoGithub from 'svelte-icons/io/IoLogoGithub.svelte';
-import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
+  import Container from './Container.svelte';
+  import IoLogoCodepen from 'svelte-icons/io/IoLogoCodepen.svelte';
+  import IoLogoTwitter from 'svelte-icons/io/IoLogoTwitter.svelte';
+  import IoLogoGithub from 'svelte-icons/io/IoLogoGithub.svelte';
+  import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
 </script>
+
 <style lang="scss">
   footer {
     background: var(--light);
@@ -37,10 +38,10 @@ import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
     }
 
     .icon {
-        width: 1em;
-        height: 1em;
-        color: inherit;
-        display: inline-block;
+      width: 1em;
+      height: 1em;
+      color: inherit;
+      display: inline-block;
       & > :global(svg) {
         fill: currentColor;
       }
@@ -49,49 +50,29 @@ import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
 </style>
 
 <footer>
-    <Container>
-        <ul>
-            <li>
-              <a
-                title="codepen profile"
-                href="https://codepen.io/nk13_codes"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span class="icon"><IoLogoCodepen aria-hidden="true" /></span>
-              </a>
-            </li>
-  
-            <li>
-              <a
-                title="twitter profile"
-                href="https://twitter.com/nk13_codes"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
-              </a>
-            </li>
-            <li>
-              <a
-                title="github profile"
-                href="https://github.com/NK-WebDev"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span class="icon"><IoLogoGithub aria-hidden="true" /></span>
-              </a>
-            </li>
-            <li>
-              <a
-                title="instagram profile"
-                href="https://instagram.com/nk13_codes"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <span class="icon"><IoLogoInstagram aria-hidden="true" /></span>
-              </a>
-            </li>
-          </ul>
-    </Container>
+  <Container>
+    <ul>
+      <li>
+        <a title="codepen profile" href="https://codepen.io/nirjan_dev" rel="noopener noreferrer" target="_blank">
+          <span class="icon"><IoLogoCodepen aria-hidden="true" /></span>
+        </a>
+      </li>
+
+      <li>
+        <a title="twitter profile" href="https://twitter.com/nirjan_dev" rel="noopener noreferrer" target="_blank">
+          <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
+        </a>
+      </li>
+      <li>
+        <a title="github profile" href="https://github.com/nirjan-dev" rel="noopener noreferrer" target="_blank">
+          <span class="icon"><IoLogoGithub aria-hidden="true" /></span>
+        </a>
+      </li>
+      <li>
+        <a title="instagram profile" href="https://instagram.com/nirjan.dev" rel="noopener noreferrer" target="_blank">
+          <span class="icon"><IoLogoInstagram aria-hidden="true" /></span>
+        </a>
+      </li>
+    </ul>
+  </Container>
 </footer>

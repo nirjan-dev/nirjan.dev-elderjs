@@ -36,6 +36,17 @@
     crossorigin="anonymous" />
 
   <link rel="stylesheet" href="/style.css" />
+  <!-- Panelbear Analytics - We respect your privacy -->
+  <script async src="https://cdn.panelbear.com/analytics.js?site=ByU4h80Ugbv">
+  </script>
+  <script>
+    window.panelbear =
+      window.panelbear ||
+      function () {
+        (window.panelbear.q = window.panelbear.q || []).push(arguments);
+      };
+    panelbear('config', { site: 'ByU4h80Ugbv' });
+  </script>
 </svelte:head>
 <Header {helpers} />
 <main>

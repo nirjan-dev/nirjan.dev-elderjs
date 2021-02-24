@@ -413,6 +413,9 @@ template {
   --spacing-5: 8.224rem;
   --spacing-6: 13.307rem;
   --spacing-7: 21.53rem;
+
+  /* border radius */
+  --border-radius-normal: 5px;
 }
 
 *,

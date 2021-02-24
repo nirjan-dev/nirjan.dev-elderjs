@@ -10,6 +10,9 @@
   import type { Post } from '../types/post';
   import type { SEOProps } from '../types/seoProps';
   import Seo from './SEO.svelte';
+  import IoLogoTwitter from 'svelte-icons/io/IoLogoTwitter.svelte';
+  import IoLogoFacebook from 'svelte-icons/io/IoLogoFacebook.svelte';
+
   const resolver = new RichTextResolver(richTextSchema);
   export let preview = false;
   export let post: Post;
@@ -143,14 +146,54 @@
     }
   }
   .share-links {
-    margin: var(--spacing-1);
-    a {
-      padding: var(--spacing-0) 0;
-      display: inline-block;
-    }
+    margin: var(--spacing-1) 0;
     &__list {
       list-style-type: none;
       padding: 0;
+      display: flex;
+
+      * + * {
+        margin-left: var(--spacing-0);
+      }
+    }
+  }
+
+  .social-btn {
+    background: var(--dark);
+    padding: var(--spacing-0) var(--spacing-1);
+    display: inline-block;
+    color: var(--extra-light);
+    border-radius: var(--border-radius-normal);
+    margin-bottom: var(--spacing-0);
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--extra-light);
+      opacity: 1;
+    }
+
+    &--twitter {
+      background: #1da1f2;
+    }
+
+    &--facebook {
+      background: #43609c;
+    }
+    .icon {
+      width: 1em;
+      height: 1em;
+      color: inherit;
+      display: inline-block;
+      margin-left: 0.2em;
+      & > :global(svg) {
+        fill: currentColor;
+      }
     }
   }
 </style>
@@ -191,28 +234,45 @@
     <ul class="share-links__list">
       <li>
         <a
+          class="social-btn social-btn--twitter"
+          href={`https://twitter.com/intent/tweet?url=https://nirjan.dev/${post.slug}&text=${post.name} by @nirjan_dev`}
+          aria-label="share on twitter"
+          target="_blank"
+          rel="noopener noreferrer">
+          Share
+          <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-btn social-btn--twitter"
           href={`https://twitter.com/search?q=${encodeURIComponent('https://nirjan.dev/' + post.slug)}`}
           target="_blank"
+          aria-label="discuss on twitter"
           rel="noopener noreferrer">
-          Discuss on Twitter
+          Discuss
+          <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
         </a>
       </li>
       <li>
         <a
-          href={`https://twitter.com/intent/tweet?url=https://nirjan.dev/${post.slug}&text=${post.name} by @nk13_codes`}
-          target="_blank"
-          rel="noopener noreferrer">
-          Share on Twitter
-        </a>
-      </li>
-      <li>
-        <a
+          class="social-btn social-btn--facebook"
           href={`https://facebook.com/sharer/sharer.php?u=https://nirjan.dev/${post.name}`}
           target="_blank"
+          aria-label="share on facebook"
           rel="noopener noreferrer">
-          Share on Facebook
+          Share
+          <span class="icon"><IoLogoFacebook aria-hidden="true" /></span>
         </a>
       </li>
     </ul>
   </section>
+  <script
+    src="https://utteranc.es/client.js"
+    repo="nirjan-dev/site-comments"
+    issue-term="pathname"
+    theme="github-light"
+    crossorigin="anonymous"
+    async>
+  </script>
 </Container>

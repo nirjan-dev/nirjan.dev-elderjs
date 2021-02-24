@@ -26,7 +26,7 @@
     border: none;
     padding: var(--spacing-0) var(--spacing-3);
     color: var(--light);
-    border-radius: 5px;
+    border-radius: var(--border-radius-normal);
     box-shadow: 0px 4px 3px 0px rgba(50, 50, 50, 0.2);
     opacity: 0.9;
     transition: all 200ms cubic-bezier(0.08, 0.82, 0.17, 1);

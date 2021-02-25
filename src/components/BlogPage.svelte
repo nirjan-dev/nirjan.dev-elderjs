@@ -196,6 +196,9 @@
       }
     }
   }
+  .utterances {
+    max-width: 100%;
+  }
 </style>
 
 <svelte:head>

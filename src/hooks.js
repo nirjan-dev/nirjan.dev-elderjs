@@ -3,6 +3,9 @@ const glob = require('glob');
 const fs = require('fs-extra');
 const os = require('os');
 const StoryblokClient = require('storyblok-js-client');
+const { readdirSync } = require('fs');
+const { statSync } = require('fs');
+const { join } = require('path');
 
 /**
  * Hooks! 
@@ -63,6 +66,28 @@ const hooks = [
           );
         }
       });
+    },
+  },
+
+  {
+    hook: 'bootstrap',
+    name: 'copyWebComponents',
+    description: 'Copies web-components to the "distDir" defined in the elder.config.js.',
+    run: ({ settings }) => {
+      // note that this function doesn't manipulate any props or return anything.
+      // It is just executed on the 'bootstrap' hook which runs once when Elder.js is starting.
+
+      const dirs = (p) => readdirSync(p).filter((f) => statSync(join(p, f)).isDirectory());
+      const components = dirs(path.resolve(settings.rootDir, './src/web-components'));
+
+      components.forEach((component) => {
+        fs.copySync(
+          path.resolve(settings.rootDir, `./src/web-components/${component}/dist`),
+          path.resolve(settings.distDir, `./web-components/${component}/dist`),
+        );
+      });
+      // copy assets folder to public destination
+      // fs.copySync(path.resolve(settings.rootDir, './src/web-components'), settings.distDir);
     },
   },
 

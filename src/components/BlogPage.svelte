@@ -14,6 +14,44 @@
   import IoLogoFacebook from 'svelte-icons/io/IoLogoFacebook.svelte';
 
   const resolver = new RichTextResolver(richTextSchema);
+
+  const componentsToLoad = [];
+  const componentResolver = (component, blok) => {
+    switch (component) {
+      case 'quiz':
+        componentsToLoad.push('quiz');
+        return `<nk-quiz options='${JSON.stringify(blok.questions).replace(/[\/\(\)\']/g, '&apos;')}'></nk-quiz>
+       
+        `;
+        break;
+    }
+  };
+
+  resolver.addNode('blok', (node) => {
+    let html = '';
+    node.attrs.body.forEach((blok) => {
+      html += componentResolver(blok.component, blok);
+    });
+    return {
+      html: html,
+    };
+  });
+
+  const loadScripts = () => {
+    if (componentsToLoad.length > 0) {
+      const scripts = [];
+      componentsToLoad.forEach((component) => {
+        scripts.push(`
+        <script type="module" src="/web-components/${component}/dist/index.mjs">
+          <script nomodule src="/web-components/${component}/dist/index.js">
+        `);
+      });
+      return scripts.join(' ');
+    } else {
+      return '';
+    }
+  };
+
   export let preview = false;
   export let post: Post;
   // cover image stuff
@@ -85,6 +123,8 @@
     datePublished: post.first_published_at,
     keywords: post.tag_list.join(','),
   };
+  let postBody;
+  $: postBody = resolver.render(post.content.body);
 </script>
 
 <style lang="scss" global>
@@ -211,6 +251,7 @@
   </script>
   <script defer src="/prism/prism.js">
   </script>
+  {@html loadScripts()}
   <Seo options={seoProps} />
 </svelte:head>
 
@@ -230,7 +271,7 @@
   {/if}
 
   <article class="post">
-    {@html resolver.render(post.content.body)}
+    {@html postBody}
   </article>
 
   <section class="share-links">

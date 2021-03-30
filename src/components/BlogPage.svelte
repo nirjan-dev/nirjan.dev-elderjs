@@ -187,11 +187,8 @@
   }
   .share-links {
     margin: var(--spacing-1) 0;
-    &__list {
-      list-style-type: none;
-      padding: 0;
-      display: flex;
 
+    @media (min-width: 480px) {
       * + * {
         margin-left: var(--spacing-0);
       }
@@ -210,6 +207,11 @@
     display: inline-flex;
     align-items: center;
     line-height: 0;
+
+    @media (max-width: 480px) {
+      display: flex;
+      justify-content: center;
+    }
 
     &:hover,
     &:focus,
@@ -239,6 +241,113 @@
   .utterances {
     max-width: 100%;
   }
+
+  .post__wrapper {
+    margin: 0 auto;
+    max-width: 60ch;
+
+    @media (max-width: 1660px) and (min-width: 641px) {
+      margin-left: 26ch;
+    }
+  }
+
+  .toc {
+    position: sticky;
+    top: 5%;
+    float: left;
+
+    a {
+      display: block;
+      color: var(--gray);
+      transition: color 0.6s ease-in-out;
+      max-width: 20ch;
+      padding: var(--spacing-0);
+      opacity: 0.8;
+      transition: color 0.3s linear, opacity 0.3s linear;
+    }
+
+    .active a,
+    a:hover {
+      color: var(--primary-dark);
+      opacity: 1;
+    }
+
+    .active a {
+      font-weight: bold;
+    }
+
+    ul {
+      margin-left: var(--spacing-0);
+      transform-origin: 50% 0;
+      padding-left: var(--spacing-0);
+    }
+
+    li {
+      list-style: none;
+      display: block;
+    }
+
+    .toc-button {
+      width: 100%;
+      padding: var(--spacing-0);
+      background-color: var(--primary);
+      color: var(--light);
+      display: none;
+      border: none;
+    }
+
+    .toc-header {
+      font-size: var(--font-size-2);
+      text-align: center;
+    }
+
+    @media only screen and (max-width: 640px) {
+      // & {
+      //   display: none;
+      // }
+
+      .toc-button {
+        display: block;
+      }
+
+      .toc-header {
+        display: none;
+      }
+
+      & {
+        float: none;
+        border-right: none;
+        border-radius: var(--border-radius-normal);
+        margin-bottom: var(--spacing-1);
+
+        z-index: 1;
+        top: 0%;
+        // position: fixed;
+        width: 100%;
+
+        #toc > ul {
+          background-color: var(--light);
+
+          display: none;
+          // transform: translateY(-110%);
+          padding: var(--spacing-0);
+
+          &.active {
+            display: block;
+          }
+        }
+
+        ul {
+          margin-left: 0;
+          padding-left: 0;
+        }
+
+        a {
+          max-width: 100%;
+        }
+      }
+    }
+  }
 </style>
 
 <svelte:head>
@@ -251,72 +360,72 @@
   </script>
   <script defer src="/prism/prism.js">
   </script>
+  <script defer src="/toc/generatoc.js">
+  </script>
   {@html loadScripts()}
   <Seo options={seoProps} />
 </svelte:head>
 
 <Banner title={post.name} subtitle={`Last updated: ${DateFormatter(post.published_at)}`} />
-<Container isNarrow={true}>
-  <p class="lead">{post.content.excerpt}</p>
 
-  {#if coverImage}
-    <!-- content here -->
-    <Image
-      className="post__cover-img"
-      JPEGSrcset={coverImage.JPEGSrcset}
-      placeholder={coverImage.placeholder}
-      alt={coverImage.alt}
-      src={coverImage.src}
-      WebPSrcset={coverImage.WebPSrcset} />
-  {/if}
+<aside class="toc">
+  <button class="toc-button">Toggle Table of Contents</button>
+  <h2 class="toc-header">Table of Contents</h2>
+  <div id="toc" />
+</aside>
 
-  <article class="post">
-    {@html postBody}
-  </article>
-
-  <section class="share-links">
-    <ul class="share-links__list">
-      <li>
-        <a
-          class="social-btn social-btn--twitter"
-          href={`https://twitter.com/intent/tweet?url=https://nirjan.dev/${post.slug}&text=${post.name} by @nirjan_dev`}
-          aria-label="share on twitter"
-          target="_blank"
-          rel="noopener noreferrer">
-          Share
-          <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
-        </a>
-      </li>
-      <li>
-        <a
-          class="social-btn social-btn--twitter"
-          href={`https://twitter.com/search?q=${encodeURIComponent('https://nirjan.dev/' + post.slug)}`}
-          target="_blank"
-          aria-label="discuss on twitter"
-          rel="noopener noreferrer">
-          Discuss
-          <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
-        </a>
-      </li>
-      <li>
-        <a
-          class="social-btn social-btn--facebook"
-          href={`https://facebook.com/sharer/sharer.php?u=https://nirjan.dev/${post.name}`}
-          target="_blank"
-          aria-label="share on facebook"
-          rel="noopener noreferrer">
-          Share
-          <span class="icon"><IoLogoFacebook aria-hidden="true" /></span>
-        </a>
-      </li>
-    </ul>
-  </section>
-  <script
-    src="https://utteranc.es/client.js"
-    repo="nirjan-dev/site-comments"
-    issue-term="pathname"
-    theme="github-light"
-    crossorigin="anonymous"
-    async>
-  </script>
+<Container>
+  <div class="post__wrapper">
+    <p class="lead">{post.content.excerpt}</p>
+    {#if coverImage}
+      <!-- content here -->
+      <Image
+        className="post__cover-img"
+        JPEGSrcset={coverImage.JPEGSrcset}
+        placeholder={coverImage.placeholder}
+        alt={coverImage.alt}
+        src={coverImage.src}
+        WebPSrcset={coverImage.WebPSrcset} />
+    {/if}
+    <article class="post">
+      {@html postBody}
+    </article>
+    <section class="share-links">
+      <a
+        class="social-btn social-btn--twitter"
+        href={`https://twitter.com/intent/tweet?url=https://nirjan.dev/${post.slug}&text=${post.name} by @nirjan_dev`}
+        aria-label="share on twitter"
+        target="_blank"
+        rel="noopener noreferrer">
+        Share
+        <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
+      </a>
+      <a
+        class="social-btn social-btn--twitter"
+        href={`https://twitter.com/search?q=${encodeURIComponent('https://nirjan.dev/' + post.slug)}`}
+        target="_blank"
+        aria-label="discuss on twitter"
+        rel="noopener noreferrer">
+        Discuss
+        <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
+      </a>
+      <a
+        class="social-btn social-btn--facebook"
+        href={`https://facebook.com/sharer/sharer.php?u=https://nirjan.dev/${post.name}`}
+        target="_blank"
+        aria-label="share on facebook"
+        rel="noopener noreferrer">
+        Share
+        <span class="icon"><IoLogoFacebook aria-hidden="true" /></span>
+      </a>
+    </section>
+    <script
+      src="https://utteranc.es/client.js"
+      repo="nirjan-dev/site-comments"
+      issue-term="pathname"
+      theme="github-light"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
 </Container>

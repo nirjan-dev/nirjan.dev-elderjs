@@ -14,6 +14,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: var(--spacing-6);
+
+    @media only screen and (max-width: 540px) {
+      margin-top: var(--spacing-1);
+    }
+
     a {
       color: var(--dark);
       &:hover,

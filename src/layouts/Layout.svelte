@@ -5,7 +5,17 @@
   export let templateHtml, helpers;
 </script>
 
-<style>
+<style lang="scss">
+  .skip-link {
+    position: absolute;
+    top: 1rem;
+    left: -9999rem;
+
+    &:focus {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 </style>
 
 <svelte:head>
@@ -48,8 +58,11 @@
     panelbear('config', { site: 'ByU4h80Ugbv' });
   </script>
 </svelte:head>
+
+<a href="#content" class="skip-link"> Skip to main content </a>
+
 <Header {helpers} />
-<main>
+<main id="content" tabindex="-1">
   {@html templateHtml}
 </main>
 <Footer />

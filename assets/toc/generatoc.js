@@ -108,7 +108,13 @@ let generatoc = (function () {
         let n = document.createElement('li');
         n.setAttribute('style', 'cursor: pointer;');
         let r = document.createElement('a');
-        return r.setAttribute('data-toc-index', t.toString()), (r.innerHTML = e || ''), n.appendChild(r), n;
+        return (
+          r.setAttribute('data-toc-index', t.toString()),
+          r.setAttribute('tabindex', 0),
+          (r.innerHTML = e || ''),
+          n.appendChild(r),
+          n
+        );
       })(e.ele.textContent, e.index);
       t.append(n);
     }

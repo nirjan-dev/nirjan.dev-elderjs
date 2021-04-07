@@ -23,6 +23,7 @@
   "peacock.color": "#060802",
   "conventionalCommits.scopes": [
     "form",
-    "blog"
+    "blog",
+    "a11y"
   ]
 }

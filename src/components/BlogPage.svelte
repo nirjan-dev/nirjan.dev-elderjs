@@ -255,6 +255,7 @@
     position: sticky;
     top: 5%;
     float: left;
+    padding: var(--spacing-0);
 
     a {
       display: block;

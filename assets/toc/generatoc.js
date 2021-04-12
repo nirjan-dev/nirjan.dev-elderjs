@@ -232,16 +232,7 @@ let generatoc = (function () {
 const content = '.post';
 const heading = ['h2', 'h3', 'h4', 'h5'];
 const selector = '#toc';
-generatoc.init({ content, heading, selector, scrollHistory: true, scrollOffset: 200, fold: true });
-
-let listenerAdded = false;
-
-// function addListener() {
-//   if (!listenerAdded) {
-//     setTimeout(addListener, 1000);
-//   }
-
-// }
+generatoc.init({ content, heading, selector, scrollHistory: true, scrollOffset: 200 });
 
 const toc = document.querySelector('#toc > ul');
 

@@ -55,9 +55,9 @@
           I design and develop websites and applications that are blazing fast, user friendly, optimized and accessible
           to everyone. I also love sharing what I've learnt about web development and UI/UX design through my
           <a href="/blog">blog</a>,
-          <a href="https://twitter.com/nk13_codes" target="_blank" rel="noopener noreferrer"> twitter </a>{' '}
+          <a href="https://twitter.com/nirjan_dev" target="_blank" rel="noopener noreferrer"> twitter </a>{' '}
           and{' '}
-          <a href="https://instagram.com/nk13_codes" target="_blank" rel="noopener noreferrer"> instagram </a>
+          <a href="https://instagram.com/nirjan.dev" target="_blank" rel="noopener noreferrer"> instagram </a>
         </p>
         <p>If you need a developer who loves design, accessibility and performance then feel free to contact me.</p>
         <a class="contact-btn" href="/contact"> Get in touch </a>

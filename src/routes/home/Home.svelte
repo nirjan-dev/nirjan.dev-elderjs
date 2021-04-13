@@ -30,7 +30,7 @@
   }
 
   .contact-btn {
-    background: var(--primary);
+    background: var(--primary-gradient);
     border: none;
     padding: var(--spacing-0) var(--spacing-3);
     color: var(--extra-light);

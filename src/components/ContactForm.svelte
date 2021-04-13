@@ -154,20 +154,18 @@
       background: var(--secondary);
       border: none;
       padding: var(--spacing-0) var(--spacing-1);
-      color: var(--light);
+      color: var(--extra-light);
       border-radius: 5px;
-      box-shadow: 0px 4px 3px 0px rgba(50, 50, 50, 0.2);
-      opacity: 0.9;
-      transition: all 200ms cubic-bezier(0.08, 0.82, 0.17, 1);
+      box-shadow: var(--box-shadow-DEFAULT);
+      transition: transform 200ms cubic-bezier(0.08, 0.82, 0.17, 1), box-shadow linear 150ms;
       display: inline-block;
       cursor: pointer;
       &:hover,
       &:active,
       &:focus {
-        box-shadow: 0px 5px 3px 0px rgba(50, 50, 50, 0.3);
-        opacity: 1;
-        transform: scale(1.025);
-        color: var(--light);
+        box-shadow: var(--box-shadow-lg);
+        transform: scale(1.025) translateY(-2px);
+        color: var(--extra-light);
       }
     }
   }

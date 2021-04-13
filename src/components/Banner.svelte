@@ -14,12 +14,18 @@
     margin-bottom: 1.8rem;
     background: var(--primary-gradient);
 
-    &__title,&__subtitle {
-        color: var(--light);
-    }    
-    
+    &__title,
+    &__subtitle {
+      color: var(--light);
+    }
+
     &__title {
       margin: 0;
+      font-size: var(--font-size-5);
+
+      @media (max-width: 680px) {
+        font-size: var(--font-size-4);
+      }
     }
     &__subtitle {
       margin-top: var(--spacing-1);
@@ -35,7 +41,7 @@
 </style>
 
 <section class="banner">
-  <h2 class="banner__title">{title}</h2>
+  <h1 class="banner__title">{title}</h1>
   {#if subtitle}
     <p class="banner__subtitle">{subtitle}</p>
   {/if}

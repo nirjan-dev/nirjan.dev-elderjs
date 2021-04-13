@@ -42,6 +42,12 @@
       max-width: 25ch;
       transition: color 200ms ease-in;
       color: var(--extra-dark);
+
+      font-size: var(--font-size-4);
+
+      @media (max-width: 680px) {
+        font-size: var(--font-size-3);
+      }
       &:hover,
       &:active,
       &:focus {
@@ -70,9 +76,9 @@
     <ul class="posts__list">
       {#each posts as post}
         <li class="posts__list-item">
-          <h3 class="posts__title">
+          <h2 class="posts__title">
             <a class="posts__link" href={helpers.permalinks.blog({ slug: post.slug })}>{post.name}</a>
-          </h3>
+          </h2>
           <p><small class="posts__date"> {DateFormatter(post.first_published_at)} </small></p>
           <p class="posts__excerpt">{post.content.excerpt}</p>
         </li>

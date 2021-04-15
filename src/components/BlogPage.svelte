@@ -196,10 +196,12 @@
   }
 
   .social-btn {
-    background: var(--dark);
+    background: transparent;
+    border: 3px solid;
+    border-color: var(--dark);
     padding: var(--spacing-0) var(--spacing-1);
     display: inline-block;
-    color: var(--extra-light);
+    color: var(--extra-dark);
     border-radius: var(--border-radius-normal);
     margin-bottom: var(--spacing-0);
     opacity: 0.8;
@@ -216,21 +218,26 @@
     &:hover,
     &:focus,
     &:active {
-      color: var(--extra-light);
       opacity: 1;
     }
 
     &--twitter {
-      background: #1da1f2;
+      border-color: hsl(202.8, 80.1%, 53.1%);
+
+      .icon {
+        color: hsl(202.8, 80.1%, 53.1%);
+      }
     }
 
     &--facebook {
-      background: #43609c;
+      border-color: hsl(220, 40%, 44%);
+      .icon {
+        color: hsl(220, 40%, 44%);
+      }
     }
     .icon {
       width: 1em;
       height: 1em;
-      color: inherit;
       display: inline-block;
       margin-left: 0.2em;
       & > :global(svg) {
@@ -292,7 +299,7 @@
       width: 100%;
       padding: var(--spacing-0);
       background-color: var(--primary);
-      color: var(--light);
+      color: var(--extra-light);
       display: none;
       border: none;
     }
@@ -399,7 +406,7 @@
         target="_blank"
         rel="noopener noreferrer">
         Share
-        <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
+        <span aria-hidden="true" class="icon"><IoLogoTwitter /></span>
       </a>
       <a
         class="social-btn social-btn--twitter"
@@ -408,7 +415,7 @@
         aria-label="discuss on twitter"
         rel="noopener noreferrer">
         Discuss
-        <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
+        <span class="icon" aria-hidden="true"><IoLogoTwitter /></span>
       </a>
       <a
         class="social-btn social-btn--facebook"
@@ -417,7 +424,7 @@
         aria-label="share on facebook"
         rel="noopener noreferrer">
         Share
-        <span class="icon"><IoLogoFacebook aria-hidden="true" /></span>
+        <span aria-hidden="true" class="icon"><IoLogoFacebook /></span>
       </a>
     </section>
     <script

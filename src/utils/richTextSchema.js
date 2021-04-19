@@ -7,6 +7,8 @@ const {
   getPaddingBottomValue,
 } = require('./responsiveImageHelpers');
 
+const slugify = require('slugify');
+
 const getResponsiveImage = function (node) {
   const originalLink = node.attrs.src;
   const { JPEGImages, webPImages, placeholder } = getImages(originalLink, sizes);
@@ -90,7 +92,14 @@ module.exports = {
     },
     heading(node) {
       return {
-        tag: `h${node.attrs.level}`,
+        tag: [
+          {
+            tag: `h${node.attrs.level}`,
+            attrs: {
+              id: slugify.default(node.content[0].text),
+            },
+          },
+        ],
       };
     },
     image(node) {

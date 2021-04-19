@@ -1,7 +1,7 @@
 const sizes = [500, 900, 1200, 1600];
 function getImages(originalLink, sizes) {
   // generate 4 images of different sizes with a webP and jpeg version 4x2 = 8 images + 1 blurry placeholder image
-  const placeholderSize = 50;
+  const placeholderSize = 51;
 
   const JPEGImages = [];
   const webPImages = [];

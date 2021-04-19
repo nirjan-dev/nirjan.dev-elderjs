@@ -12,6 +12,7 @@
   import Seo from './SEO.svelte';
   import IoLogoTwitter from 'svelte-icons/io/IoLogoTwitter.svelte';
   import IoLogoFacebook from 'svelte-icons/io/IoLogoFacebook.svelte';
+  import slugify from 'slugify';
 
   const resolver = new RichTextResolver(richTextSchema);
 
@@ -36,6 +37,26 @@
       html: html,
     };
   });
+
+  const generateTOC = (html) => {
+    const content = (<any>post.content.body).content;
+
+    let outputHTML = `<ul>`;
+
+    content.forEach((node) => {
+      if (node.type === 'heading' && node.attrs.level === 2) {
+        outputHTML += `
+          <li>
+            <a href="#${slugify(node.content[0].text)}">${node.content[0].text}</a>  
+          </li>
+        `;
+      }
+    });
+
+    outputHTML += `</ul>`;
+
+    return outputHTML;
+  };
 
   const loadScripts = () => {
     if (componentsToLoad.length > 0) {
@@ -132,6 +153,14 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
+    h2 {
+      font-size: var(--font-size-4);
+
+      @media (max-width: 680px) {
+        font-size: var(--font-size-3);
+      }
+    }
 
     &__cover-img {
       margin: var(--spacing-2) 0;
@@ -310,10 +339,6 @@
     }
 
     @media only screen and (max-width: 640px) {
-      // & {
-      //   display: none;
-      // }
-
       .toc-button {
         display: block;
       }
@@ -333,7 +358,7 @@
         // position: fixed;
         width: 100%;
 
-        #toc > ul {
+        & > ul {
           background-color: var(--light);
 
           display: none;
@@ -368,7 +393,41 @@
   </script>
   <script defer src="/prism/prism.js">
   </script>
-  <script defer src="/toc/generatoc.js">
+  <script>
+    console.log(document);
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const toc = document.querySelector('.toc > ul');
+
+      if (toc) {
+        toc.addEventListener('click', function () {
+          this.classList.remove('active');
+        });
+      }
+
+      const tocBtn = document.querySelector('.toc-button');
+
+      if (tocBtn) {
+        tocBtn.addEventListener('click', function () {
+          document.querySelector('.toc > ul').classList.toggle('active');
+        });
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute('id');
+          if (entry.intersectionRatio > 0) {
+            document.querySelector(`.toc li a[href="#${id}"]`).parentElement.classList.add('active');
+          } else {
+            document.querySelector(`.toc li a[href="#${id}"]`).parentElement.classList.remove('active');
+          }
+        });
+      });
+
+      // Track all sections that have an `id` applied
+      document.querySelectorAll('h2[id]').forEach((section) => {
+        observer.observe(section);
+      });
+    });
   </script>
   {@html loadScripts()}
   <Seo options={seoProps} />
@@ -379,7 +438,7 @@
 <aside class="toc">
   <button class="toc-button">Toggle Table of Contents</button>
   <h2 class="toc-header">Table of Contents</h2>
-  <div id="toc" />
+  {@html generateTOC(postBody)}
 </aside>
 
 <Container>

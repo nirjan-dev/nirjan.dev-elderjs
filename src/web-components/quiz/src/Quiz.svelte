@@ -19,6 +19,12 @@
 <style lang="scss">
   @import 'prism';
 
+  .hidden {
+    opacity: 0;
+    font-size: 0.1px;
+    position: absolute;
+  }
+
   .quiz {
     width: 100%;
 
@@ -116,8 +122,8 @@
 
       button {
         display: block;
-        background: var(--secondary);
-        color: var(--light);
+        background: var(--primary-dark);
+        color: var(--extra-light);
         padding: var(--spacing-0);
         margin: 0;
         border: none;
@@ -200,7 +206,7 @@
   {#each questions as question, questionIndex}
     <!-- content here -->
     <div class="quiz__question-block">
-      <h4 class="quiz__question">{question.text}</h4>
+      <h3 class="quiz__question">{question.text}</h3>
 
       {#if question.snippet}
         <div class="code-toolbar">
@@ -271,7 +277,8 @@
         {#if question.answer}
           <!-- content here -->
           <div class="quiz__answer quiz__answer--single">
-            <input type="text" bind:value={question.textAnswer} />
+            <input id={`single-answer-${questionIndex}`} type="text" bind:value={question.textAnswer} />
+            <label for={`single-answer-${questionIndex}`} class="hidden">Answer field</label>
             <button
               type="button"
               on:click={() => {

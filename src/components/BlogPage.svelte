@@ -63,8 +63,8 @@
       const scripts = [];
       componentsToLoad.forEach((component) => {
         scripts.push(`
-        <script type="module" src="/web-components/${component}/dist/index.mjs">
-          <script nomodule src="/web-components/${component}/dist/index.js">
+        <script type="module" src="/web-components/${component}/dist/index.mjs" > <\/script>
+          <script nomodule src="/web-components/${component}/dist/index.js" > <\/script>
         `);
       });
       return scripts.join(' ');
@@ -429,8 +429,9 @@
       });
     });
   </script>
-  {@html loadScripts()}
   <Seo options={seoProps} />
+
+  {@html loadScripts()}
 </svelte:head>
 
 <Banner title={post.name} subtitle={`Last updated: ${DateFormatter(post.published_at)}`} />

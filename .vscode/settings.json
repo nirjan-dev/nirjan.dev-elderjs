@@ -24,6 +24,7 @@
   "conventionalCommits.scopes": [
     "form",
     "blog",
-    "a11y"
+    "a11y",
+    "quiz"
   ]
 }

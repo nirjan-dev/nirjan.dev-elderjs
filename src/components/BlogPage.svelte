@@ -394,7 +394,6 @@
   <script defer src="/prism/prism.js">
   </script>
   <script>
-    console.log(document);
     document.addEventListener('DOMContentLoaded', (event) => {
       const toc = document.querySelector('.toc > ul');
 

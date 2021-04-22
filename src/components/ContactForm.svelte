@@ -123,6 +123,7 @@
       padding: var(--spacing-0);
       &:focus,
       &:active {
+        outline: none;
         border: none;
         border-bottom-color: currentcolor;
         border-bottom-style: none;
@@ -154,7 +155,7 @@
       background: var(--secondary);
       border: none;
       padding: var(--spacing-0) var(--spacing-1);
-      color: var(--extra-light);
+      color: var(--lightest);
       border-radius: 5px;
       box-shadow: var(--box-shadow-DEFAULT);
       transition: transform 200ms cubic-bezier(0.08, 0.82, 0.17, 1), box-shadow linear 150ms;
@@ -165,7 +166,7 @@
       &:focus {
         box-shadow: var(--box-shadow-lg);
         transform: scale(1.025) translateY(-2px);
-        color: var(--extra-light);
+        color: var(--lightest);
       }
     }
   }
@@ -223,7 +224,7 @@
         name="message"
         id="message"
         placeholder="Your message" />
-      <label class="form__label" for="message">message</label>
+      <label class="form__label" for="message">Message</label>
       {#if errors.message}
         <p class="form__error-msg">{errors.message}</p>
       {/if}

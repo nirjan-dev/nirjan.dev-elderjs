@@ -179,7 +179,8 @@
     blockquote {
       border-left: 8px solid var(--primary);
       padding: var(--spacing-0);
-      background: var(--light);
+      background: var(--lighter);
+      border-radius: var(--border-radius-normal);
     }
     pre {
       padding: var(--spacing-1);
@@ -200,12 +201,12 @@
       border-radius: 10px;
       &:hover,
       &:focus {
-        color: var(--extra-light);
+        color: var(--lightest);
       }
     }
     div.code-toolbar > .toolbar button {
       background: var(--secondary);
-      color: var(--extra-light);
+      color: var(--lightest);
       cursor: pointer;
       transition: 200ms linear background-color;
       &:hover,
@@ -230,7 +231,7 @@
     border-color: var(--dark);
     padding: var(--spacing-0) var(--spacing-1);
     display: inline-block;
-    color: var(--extra-dark);
+    color: var(--darkest);
     border-radius: var(--border-radius-normal);
     margin-bottom: var(--spacing-0);
     opacity: 0.8;
@@ -328,7 +329,7 @@
       width: 100%;
       padding: var(--spacing-0);
       background-color: var(--primary);
-      color: var(--extra-light);
+      color: var(--lightest);
       display: none;
       border: none;
     }

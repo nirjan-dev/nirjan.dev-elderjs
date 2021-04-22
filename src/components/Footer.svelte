@@ -8,7 +8,7 @@
 
 <style lang="scss">
   footer {
-    background: var(--light);
+    background: var(--lightest);
     padding: 2rem 0rem;
     text-align: center;
     display: flex;

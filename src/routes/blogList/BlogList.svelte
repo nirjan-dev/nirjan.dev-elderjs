@@ -41,7 +41,7 @@
     &__title {
       max-width: 25ch;
       transition: color 200ms ease-in;
-      color: var(--extra-dark);
+      color: var(--darkest);
 
       font-size: var(--font-size-4);
 

@@ -16,7 +16,7 @@
 
     &__title,
     &__subtitle {
-      color: var(--light);
+      color: var(--lightest);
     }
 
     &__title {

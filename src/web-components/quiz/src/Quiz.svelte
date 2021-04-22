@@ -123,7 +123,7 @@
       button {
         display: block;
         background: var(--primary-dark);
-        color: var(--extra-light);
+        color: var(--lightest);
         padding: var(--spacing-0);
         margin: 0;
         border: none;

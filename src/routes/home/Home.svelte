@@ -33,7 +33,7 @@
     background: var(--primary-gradient);
     border: none;
     padding: var(--spacing-0) var(--spacing-3);
-    color: var(--extra-light);
+    color: var(--lightest);
     border-radius: var(--border-radius-normal);
     box-shadow: var(--box-shadow-DEFAULT);
     transition: transform 200ms cubic-bezier(0.08, 0.82, 0.17, 1), box-shadow linear 150ms;
@@ -43,7 +43,7 @@
     &:focus {
       box-shadow: var(--box-shadow-lg);
       transform: scale(1.025) translateY(-2px);
-      color: var(--extra-light);
+      color: var(--lightest);
     }
   }
 </style>

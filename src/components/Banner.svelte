@@ -17,6 +17,9 @@
     &__title,
     &__subtitle {
       color: var(--lightest);
+      @media (prefers-color-scheme: dark) {
+        color: var(--darkest);
+      }
     }
 
     &__title {

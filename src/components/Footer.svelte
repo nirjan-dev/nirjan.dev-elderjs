@@ -8,7 +8,7 @@
 
 <style lang="scss">
   footer {
-    background: var(--lightest);
+    background: var(--lighter);
     padding: 2rem 0rem;
     text-align: center;
     display: flex;
@@ -60,23 +60,23 @@
     <ul>
       <li>
         <a title="codepen profile" href="https://codepen.io/nirjan_dev" rel="noopener noreferrer" target="_blank">
-          <span class="icon"><IoLogoCodepen aria-hidden="true" /></span>
+          <span class="icon" aria-hidden="true"><IoLogoCodepen /></span>
         </a>
       </li>
 
       <li>
         <a title="twitter profile" href="https://twitter.com/nirjan_dev" rel="noopener noreferrer" target="_blank">
-          <span class="icon"><IoLogoTwitter aria-hidden="true" /></span>
+          <span class="icon" aria-hidden="true"><IoLogoTwitter /></span>
         </a>
       </li>
       <li>
         <a title="github profile" href="https://github.com/nirjan-dev" rel="noopener noreferrer" target="_blank">
-          <span class="icon"><IoLogoGithub aria-hidden="true" /></span>
+          <span class="icon" aria-hidden="true"><IoLogoGithub /></span>
         </a>
       </li>
       <li>
         <a title="instagram profile" href="https://instagram.com/nirjan.dev" rel="noopener noreferrer" target="_blank">
-          <span class="icon"><IoLogoInstagram aria-hidden="true" /></span>
+          <span class="icon" aria-hidden="true"><IoLogoInstagram /></span>
         </a>
       </li>
     </ul>

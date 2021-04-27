@@ -354,16 +354,8 @@ template {
 :root {
   /* colors */
   --purple-hue: 263;
-  /* --purple: #845ec2; */
-  /* --blue-green: #097966; */
-  --blue-green-hue: 170;
+  --green-hue: 95;
 
-  /* --light-purple: #b39cd0; */
-  /* --gray-purple: #fbeaff; */
-  /* --gray: #444; */
-  /* --dark-purple: #1e0b4f; */
-  /* --white: #fefefe; */
-  /* --black: #111; */
   --purple-gradient-dark: hsl(272, 76%, 53%);
   --purple-gradient-light: hsl(260, 100%, 44%);
   --green-gradient-light: hsl(193, 100%, 50%);
@@ -378,27 +370,34 @@ template {
   --primary-light: hsl(var(--primary-hue), var(--primary-light-sl));
   --primary-dark: hsl(var(--primary-hue), var(--primary-dark-sl));
 
-  --secondary-hue: var(--blue-green-hue);
-  --secondary-sl: 86%, 25%;
-  --secondary-light-sl: 75%, 70%;
-  --secondary-dark-sl: 90%, 35%;
+  --secondary-hue: var(--green-hue);
+  --secondary-sl: 45%, 56%;
+  --secondary-light-sl: 35%, 65%;
+  --secondary-dark-sl: 67%, 23%;
   --secondary: hsl(var(--secondary-hue), var(--secondary-sl));
   --secondary-light: hsl(var(--secondary-hue), var(--secondary-light-sl));
   --secondary-dark: hsl(var(--secondary-hue), var(--secondary-dark-sl));
 
-  --light: hsl(var(--primary-hue), 85%, 85%);
-  --lighter: hsl(var(--primary-hue), 95%, 95%);
-  --lightest: hsl(var(--primary-hue), 98%, 98%);
+  --light-sl: 85%, 85%;
+  --lighter-sl: 95%, 95%;
+  --lightest-sl: 99%, 99%;
+  --light: hsl(var(--primary-hue), var(--light-sl));
+  --lighter: hsl(var(--primary-hue), var(--lighter-sl));
+  --lightest: hsl(var(--primary-hue), var(--lightest-sl));
 
-  --dark: hsl(var(--primary-hue), 30%, 30%);
-  --darker: hsl(var(--primary-hue), 20%, 20%);
-  --darkest: hsl(var(--primary-hue), 5%, 5%);
+  --dark-sl: 30%, 30%;
+  --darker-sl: 20%, 20%;
+  --darkest-sl: 5%, 5%;
+  --dark: hsl(var(--primary-hue), var(--dark-sl));
+  --darker: hsl(var(--primary-hue), var(--darker-sl));
+  --darkest: hsl(var(--primary-hue), var(--darkest-sl));
 
   --primary-gradient: linear-gradient(to right, var(--purple-gradient-dark), var(--purple-gradient-light));
   --secondary-gradient: linear-gradient(to right, var(--green-gradient-light), var(--green-gradient-dark));
 
   --success: hsl(125, 62%, 32%);
   --danger: hsl(5, 85%, 29%);
+  --link-color: var(--secondary-dark);
 
   /* typography */
   --body-font-family: 'Merriweather Sans', Tahoma, Arial, Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -450,24 +449,23 @@ template {
 }
 
 @media (prefers-color-scheme: dark) {
-  /* :root {
-    --primary: var(--light-purple);
-    --secondary: var(--blue-green);
-    --primary-light: var(--dark-purple);
-    --light: var(--gray);
-    --extra-light: var(--black);
-    --dark: var(--gray-purple);
-    --extra-dark: var(--white);
-    --primary-dark: var(--light-purple);
-    --primary-gradient: linear-gradient(to right, var(--purple-gradient-dark), var(--purple-gradient-light));
-    --secondary-gradient: 'linear-gradient(to right,var(--green-gradient-light) ,var(--green-gradient-dark))';
-    --success: rgb(31, 133, 31);
-    --danger: rgb(136, 11, 11);
-  }
+  :root {
+    --primary-dark-sl: 45%, 56%;
+    --primary-light-sl: 30%, 60%;
+    --primary-sl: 65%, 35%;
 
-  body {
-    background-color: var(--lightest);
-  } */
+    --secondary-sl: 86%, 25%;
+    --secondary-light-sl: 75%, 70%;
+    --secondary-dark-sl: 90%, 35%;
+
+    --dark-sl: 93%, 93%;
+    --darker-sl: 95%, 95%;
+    --darkest-sl: 98%, 98%;
+
+    --light-sl: 30%, 30%;
+    --lighter-sl: 20%, 20%;
+    --lightest-sl: 5%, 5%;
+  }
 }
 
 *,
@@ -485,6 +483,7 @@ html {
 body {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
+  background-color: var(--lightest);
   color: var(--dark);
   display: flex;
   flex-direction: column;
@@ -552,6 +551,7 @@ h5 {
   font-weight: bold;
 }
 a {
+  color: var(--link-color);
   box-shadow: none;
   transition: color 200ms cubic-bezier(0.39, 0.58, 0.57, 1);
   text-decoration: none;

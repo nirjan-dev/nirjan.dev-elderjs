@@ -28,14 +28,14 @@
       errors.name = 'Name is required';
     }
     if (contactForm.message.length < 10) {
-      errors.message = 'message must be at least 10 characters';
+      errors.message = 'Message must be at least 10 characters';
     }
     if (!isEmail(contactForm.email)) {
       errors.email = 'Email is not valid';
     }
     // elderjs needs an LHS assignment for reactivity to work
     errors = { ...errors };
-    if (contactForm.name.length < 5 || contactForm.message.length < 10 || !isEmail(contactForm.email)) {
+    if (contactForm.name.length < 0 || contactForm.message.length < 10 || !isEmail(contactForm.email)) {
       return false;
     } else {
       return true;
@@ -106,45 +106,43 @@
       margin: var(--spacing-2) 0;
     }
     &__error-msg {
-      color: tomato;
+      color: var(--danger);
       min-height: 1.2rem;
       margin: 0;
     }
     &__field {
-      background: 0 0;
-      border: none;
-      border-bottom-color: currentcolor;
-      border-bottom-style: none;
-      border-bottom-width: medium;
-      border-radius: 0;
-      border-bottom: 2px solid var(--primary-light);
+      outline: none;
+      border: 2px solid var(--primary);
+      border-radius: var(--border-radius-normal);
       display: block;
       width: 100%;
       padding: var(--spacing-0);
+
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--lighter);
+        color: var(--darkest);
+        border-color: var(--dark);
+      }
+
       &:focus,
       &:active {
         outline: none;
-        border: none;
-        border-bottom-color: currentcolor;
-        border-bottom-style: none;
-        border-bottom-width: medium;
-        border-bottom: 2px solid var(--primary);
-        background: var(--light);
+        border-color: var(--primary-darker);
+        border-width: 3px;
+        background: var(--lighter);
+
+        @media (prefers-color-scheme: dark) {
+          border-color: var(--primary-dark);
+          background: var(--lightest);
+        }
+      }
+
+      &.has-error {
+        border-color: var(--danger);
       }
     }
     &__label {
       display: block;
-      font-weight: lighter;
-      color: #666;
-      position: absolute;
-      top: 0;
-      opacity: 0;
-      transition: 0.3s opacity ease-out, 0.3s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    &__field:focus + label,
-    &__field:active + label {
-      transform: translateY(-30px);
-      opacity: 1;
     }
     &__field {
       &.with-min-height {
@@ -152,7 +150,7 @@
       }
     }
     &__action-btn {
-      background: var(--secondary);
+      background: var(--secondary-dark);
       border: none;
       padding: var(--spacing-0) var(--spacing-1);
       color: var(--lightest);
@@ -192,42 +190,42 @@
     <!-- Optional -->
     <div hidden><label> Don’t fill this out: <input name="bot-field" /> </label></div>
     <div class="form__group">
-      <input
-        class="form__field"
-        placeholder="Your Name"
-        bind:value={contactForm.name}
-        name="name"
-        type="text"
-        id="name" />
       <label class="form__label" for="name">Name</label>
       {#if errors.name}
         <p class="form__error-msg">{errors.name}</p>
       {/if}
-    </div>
-    <div class="form__group">
       <input
         class="form__field"
-        placeholder="Your Email"
-        bind:value={contactForm.email}
-        name="email"
+        class:has-error={errors.name}
+        bind:value={contactForm.name}
+        name="name"
         type="text"
-        id="email" />
+        id="name" />
+    </div>
+    <div class="form__group">
       <label class="form__label" for="email">Email</label>
       {#if errors.email}
         <p class="form__error-msg">{errors.email}</p>
       {/if}
+      <input
+        class="form__field"
+        class:has-error={errors.email}
+        bind:value={contactForm.email}
+        name="email"
+        type="text"
+        id="email" />
     </div>
     <div class="form__group">
-      <textarea
-        class="form__field with-min-height"
-        bind:value={contactForm.message}
-        name="message"
-        id="message"
-        placeholder="Your message" />
       <label class="form__label" for="message">Message</label>
       {#if errors.message}
         <p class="form__error-msg">{errors.message}</p>
       {/if}
+      <textarea
+        class="form__field with-min-height"
+        class:has-error={errors.message}
+        bind:value={contactForm.message}
+        name="message"
+        id="message" />
     </div>
     <div class="form__group"><button class="form__action-btn" type="submit">Send</button></div>
   </form>

@@ -13,7 +13,7 @@
     justify-content: center;
     align-items: center;
     a:not(.contact-btn) {
-      border-bottom: 3px solid var(--primary);
+      border-bottom: 3px solid currentColor;
     }
     p {
       max-width: 60ch;
@@ -44,6 +44,15 @@
       box-shadow: var(--box-shadow-lg);
       transform: scale(1.025) translateY(-2px);
       color: var(--lightest);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--darkest);
+      &:hover,
+      &:active,
+      &:focus {
+        color: var(--darkest);
+      }
     }
   }
 </style>

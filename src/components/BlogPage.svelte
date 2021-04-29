@@ -201,12 +201,13 @@
       border-radius: 10px;
       &:hover,
       &:focus {
-        color: var(--lightest);
+        color: var(--darkest);
       }
     }
-    div.code-toolbar > .toolbar button {
+    div.code-toolbar > .toolbar button,
+    div.code-toolbar > .toolbar span {
       background: var(--secondary);
-      color: var(--lightest);
+      color: var(--darkest);
       cursor: pointer;
       transition: 200ms linear background-color;
       &:hover,
@@ -302,12 +303,20 @@
       padding: var(--spacing-0);
       opacity: 0.8;
       transition: color 0.3s linear, opacity 0.3s linear;
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--dark);
+      }
     }
 
     .active a,
     a:hover {
       color: var(--primary-dark);
       opacity: 1;
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--primary-dark);
+      }
     }
 
     .active a {
@@ -332,6 +341,10 @@
       color: var(--lightest);
       display: none;
       border: none;
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--darkest);
+      }
     }
 
     .toc-header {
@@ -378,6 +391,15 @@
 
         a {
           max-width: 100%;
+        }
+
+        .active {
+          a,
+          a:hover {
+            @media (prefers-color-scheme: dark) {
+              color: var(--darker);
+            }
+          }
         }
       }
     }
@@ -491,8 +513,8 @@
       src="https://utteranc.es/client.js"
       repo="nirjan-dev/site-comments"
       issue-term="pathname"
-      theme="github-light"
       crossorigin="anonymous"
+      theme="preferred-color-scheme"
       async>
     </script>
   </div>

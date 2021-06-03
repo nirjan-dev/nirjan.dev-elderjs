@@ -20,6 +20,12 @@
       margin-top: var(--spacing-1);
     }
 
+    @media (max-width: 560px) {
+      ul {
+        display: none;
+      }
+    }
+
     a {
       color: var(--dark);
       &:hover,

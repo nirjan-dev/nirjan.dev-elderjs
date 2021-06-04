@@ -367,7 +367,7 @@
         border-radius: var(--border-radius-normal);
         margin-bottom: var(--spacing-1);
 
-        z-index: 1;
+        z-index: var(--z-index-toc);
         top: 0%;
         // position: fixed;
         width: 100%;

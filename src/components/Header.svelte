@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { SocialMenuItems } from '../types/socialMenuItems';
+
   import Navbar from './Navbar.svelte';
   import NavBrand from './NavBrand.svelte';
 
@@ -9,6 +11,8 @@
       blogList: (option: { slug: string }) => string;
     };
   };
+
+  export let socialMenuItems: SocialMenuItems;
 
   const navItems = [
     {
@@ -32,7 +36,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media (max-width: 40em) {
+    @media (max-width: 560px) {
       flex-direction: column;
     }
   }
@@ -40,5 +44,5 @@
 
 <header>
   <NavBrand {helpers} />
-  <Navbar hydrate-options={{ preload: true, loading: 'eager' }} hydrate-client={{ navItems }} />
+  <Navbar hydrate-options={{ preload: true, loading: 'eager' }} hydrate-client={{ navItems, socialMenuItems }} />
 </header>

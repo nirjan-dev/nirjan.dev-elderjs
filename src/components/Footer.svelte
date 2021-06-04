@@ -4,19 +4,21 @@
   import IoLogoTwitter from 'svelte-icons/io/IoLogoTwitter.svelte';
   import IoLogoGithub from 'svelte-icons/io/IoLogoGithub.svelte';
   import IoLogoInstagram from 'svelte-icons/io/IoLogoInstagram.svelte';
+  import type { SocialMenuItems } from '../types/socialMenuItems';
+
+  export let socialMenuItems: SocialMenuItems;
 </script>
 
 <style lang="scss">
   footer {
     background: var(--lighter);
     padding: 2rem 0rem;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: var(--spacing-6);
 
-    @media only screen and (max-width: 540px) {
+    @media only screen and (max-width: 560px) {
       margin-top: var(--spacing-1);
     }
 
@@ -44,7 +46,6 @@
       padding: 0;
       a {
         margin: 0 var(--spacing-1);
-        font-weight: bold;
         font-size: var(--font-size-2);
       }
     }
@@ -64,27 +65,23 @@
 <footer>
   <Container>
     <ul>
-      <li>
-        <a title="codepen profile" href="https://codepen.io/nirjan_dev" rel="noopener noreferrer" target="_blank">
-          <span class="icon" aria-hidden="true"><IoLogoCodepen /></span>
-        </a>
-      </li>
-
-      <li>
-        <a title="twitter profile" href="https://twitter.com/nirjan_dev" rel="noopener noreferrer" target="_blank">
-          <span class="icon" aria-hidden="true"><IoLogoTwitter /></span>
-        </a>
-      </li>
-      <li>
-        <a title="github profile" href="https://github.com/nirjan-dev" rel="noopener noreferrer" target="_blank">
-          <span class="icon" aria-hidden="true"><IoLogoGithub /></span>
-        </a>
-      </li>
-      <li>
-        <a title="instagram profile" href="https://instagram.com/nirjan.dev" rel="noopener noreferrer" target="_blank">
-          <span class="icon" aria-hidden="true"><IoLogoInstagram /></span>
-        </a>
-      </li>
+      {#each socialMenuItems as socialMenuItem}
+        <li>
+          <a title={socialMenuItem.title} href={socialMenuItem.link} rel="noopener noreferrer" target="_blank">
+            <span class="icon" aria-hidden="true">
+              {#if socialMenuItem.icon === 'IoLogoCodepen'}
+                <IoLogoCodepen />
+              {:else if socialMenuItem.icon === 'IoLogoGithub'}
+                <IoLogoGithub />
+              {:else if socialMenuItem.icon === 'IoLogoTwitter'}
+                <IoLogoTwitter />
+              {:else if socialMenuItem.icon === 'IoLogoInstagram'}
+                <IoLogoInstagram />
+              {/if}
+            </span>
+          </a>
+        </li>
+      {/each}
     </ul>
   </Container>
 </footer>

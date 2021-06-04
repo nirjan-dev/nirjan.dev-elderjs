@@ -3,6 +3,29 @@
   import Header from '../components/Header.svelte';
 
   export let templateHtml, helpers;
+
+  const socialMenuItems = [
+    {
+      title: 'codepen profile',
+      link: 'https://codepen.io/nirjan_dev',
+      icon: 'IoLogoCodepen',
+    },
+    {
+      title: 'twitter profile',
+      link: 'https://twitter.com/nirjan_dev',
+      icon: 'IoLogoTwitter',
+    },
+    {
+      title: 'github profile',
+      link: 'https://github.com/nirjan-dev',
+      icon: 'IoLogoGithub',
+    },
+    {
+      title: 'instagram profile',
+      link: 'https://instagram.com/nirjan.dev',
+      icon: 'IoLogoInstagram',
+    },
+  ];
 </script>
 
 <style lang="scss">
@@ -61,8 +84,8 @@
 
 <a href="#content" class="skip-link"> Skip to main content </a>
 
-<Header {helpers} />
+<Header {helpers} {socialMenuItems} />
 <main id="content" tabindex="-1">
   {@html templateHtml}
 </main>
-<Footer />
+<Footer {socialMenuItems} />

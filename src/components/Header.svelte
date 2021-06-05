@@ -44,5 +44,5 @@
 
 <header>
   <NavBrand {helpers} />
-  <Navbar hydrate-options={{ preload: true, loading: 'eager' }} hydrate-client={{ navItems, socialMenuItems }} />
+  <Navbar {socialMenuItems} {navItems} />
 </header>

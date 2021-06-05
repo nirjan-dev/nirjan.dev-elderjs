@@ -58,7 +58,7 @@
 
         &:hover,
         &:focus {
-          background-color: var(--light);
+          background-color: var(--lightest);
         }
 
         .quiz__answer-icon {
@@ -77,7 +77,10 @@
       }
 
       input:checked + label {
-        color: var(--light);
+        color: var(--lightest);
+        @media (prefers-color-scheme: dark) {
+          color: var(--darkest);
+        }
         .quiz__answer-icon {
           display: initial;
         }
@@ -97,7 +100,10 @@
     &__answer--answered {
       .quiz__answer-option--correct + label {
         background-color: var(--success);
-        color: var(--light);
+        color: var(--lightest);
+        @media (prefers-color-scheme: dark) {
+          color: var(--darkest);
+        }
 
         .quiz__answer-icon {
           display: initial;
@@ -131,14 +137,21 @@
         cursor: pointer;
         opacity: 0.8;
         transition: opacity linear 0.2s;
+
+        @media (prefers-color-scheme: dark) {
+          color: var(--darkest);
+        }
       }
     }
 
     &__corect-answer {
       background: var(--secondary);
-      color: var(--light);
+      color: var(--lightest);
       padding: var(--spacing-0);
       border-radius: var(--border-radius-normal);
+      @media (prefers-color-scheme: dark) {
+        color: var(--darkest);
+      }
     }
   }
 

@@ -15,13 +15,29 @@
     a:not(.contact-btn) {
       border-bottom: 3px solid currentColor;
     }
-    p {
-      max-width: 60ch;
-      margin: var(--spacing-1) 0;
+    :global(&__sub-title, &__title) {
+      max-width: 50ch;
+      margin: var(--spacing-2) 0;
+      font-size: var(--font-size-2);
+      color: var(--darker);
+      font-weight: var(--regular-font-weight);
+      font-family: var(--body-font-family);
+      font-variation-settings: 'CASL' 0.4;
+      line-height: var(--body-line-height);
+
+      @media (max-width: 680px) {
+        font-size: var(--font-size-2);
+      }
     }
 
-    &__title {
-      font-size: var(--font-size-5);
+    &__title-intro {
+      font-size: var(--font-size-6);
+      display: block;
+      color: var(--primary-dark);
+      margin-bottom: var(--spacing-2);
+      font-family: var(--heading-font-family);
+      font-weight: var(--black-font-weight);
+      font-variation-settings: 'CASL' 1;
 
       @media (max-width: 680px) {
         font-size: var(--font-size-4);
@@ -65,16 +81,18 @@
   <div class="intro-banner">
     <div>
       <Container>
-        <h1 class="intro-banner__title">Hi, I'm Nirjan</h1>
-        <p>
-          I design and develop websites and applications that are blazing fast, user friendly, optimized and accessible
-          to everyone. I also love sharing what I've learnt about web development and UI/UX design through my
+        <h1 class="intro-banner__title">
+          <span class="intro-banner__title-intro">Hi, I'm Nirjan.</span>I make websites and apps that are blazing fast,
+          user friendly, optimized and accessible to everyone. I specialize in modern JavaScript, CSS, HTML, Vue, Svelte
+          and Node.js
+        </h1>
+        <h2 class="intro-banner__sub-title">
+          I also love sharing what I've learnt about web development and UI/UX design through my
           <a href="/blog">blog</a>,
           <a href="https://twitter.com/nirjan_dev" target="_blank" rel="noopener noreferrer"> twitter </a>{' '}
           and{' '}
           <a href="https://instagram.com/nirjan.dev" target="_blank" rel="noopener noreferrer"> instagram </a>
-        </p>
-        <p>If you need a developer who loves design, accessibility and performance then feel free to contact me.</p>
+        </h2>
         <a class="contact-btn" href="/contact"> Get in touch </a>
       </Container>
     </div>

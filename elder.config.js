@@ -36,13 +36,13 @@ module.exports = {
         },
       }, // configurable last update for each route type.
     },
-    'elderjs-plugin-google-fonts': {
-      fonts: {
-        'Merriweather Sans': ['400', '700'],
-        Merriweather: ['900'],
-      },
-      swap: true,
-    },
+    // 'elderjs-plugin-google-fonts': {
+    //   fonts: {
+    //     'Merriweather Sans': ['400', '700'],
+    //     Merriweather: ['900'],
+    //   },
+    //   swap: true,
+    // },
   },
   shortcodes: { closePattern: '}}', openPattern: '{{' },
 };

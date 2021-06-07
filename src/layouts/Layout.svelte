@@ -49,7 +49,7 @@
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#845ec2" />
   <meta name="msapplication-TileColor" content="#fbeaff" />
   <meta name="theme-color" content="#fbeaff" />
-  <link
+  <!-- <link
     rel="preload"
     href="/u-4n0qyriQwlOrhSvowK_l52_wFZWMf6.woff2"
     as="font"
@@ -66,7 +66,12 @@
     href="/2-cO9IRs1JiJN1FRAMjTN5zd9vgsFF_5asQTb6hZ2JKZRekViesH.woff2"
     as="font"
     type="font/woff2"
-    crossorigin="anonymous" />
+    crossorigin="anonymous" /> -->
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Recursive:wght,CASL@300..800,0..1&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="/style.css" />
   <!-- Panelbear Analytics - We respect your privacy -->

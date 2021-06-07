@@ -400,14 +400,14 @@ template {
   --link-color: var(--secondary-dark);
 
   /* typography */
-  --body-font-family: 'Merriweather Sans', Tahoma, Arial, Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --heading-font-family: 'Merriweather', 'Georgia', serif;
+  --body-font-family: 'Recursive', Tahoma, Arial, Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --heading-font-family: var(--body-font-family);
 
   --light-font-weight: 200;
-  --regular-font-weight: 400;
-  --bold-font-weight: 700;
-  --black-font-weight: 900;
+  --regular-font-weight: 320;
+  --bold-font-weight: 600;
+  --black-font-weight: 800;
 
   --body-line-height: 1.5;
   --body-mobile-line-height: 1.4;
@@ -494,6 +494,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-variation-settings: 'CASL' 0;
 }
 
 body > main {
@@ -541,6 +542,7 @@ h6 {
   line-height: var(--heading-line-height);
   letter-spacing: var(--heading-letter-spacing);
   color: var(--primary-dark);
+  font-variation-settings: 'CASL' 1;
 }
 strong {
   color: var(--primary-dark);
@@ -553,6 +555,7 @@ h4,
 h5 {
   max-width: 66ch;
 }
+
 .lead {
   font-weight: bold;
 }

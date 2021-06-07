@@ -7,7 +7,7 @@
 
   const description =
     options.description ??
-    "I design and develop websites and applications that are blazing fast, user friendly, optimized and accessible to everyone. I also love sharing what I've learnt about web development and UI/UX. I specialize in modern JavaScript, CSS, HTML, Vue, Svelte and Node.js";
+    "I make websites and applications that are blazing fast, user friendly, optimized and accessible to everyone. I also love sharing what I've learnt about web development and UI/UX. I specialize in modern JavaScript, CSS, HTML, Vue, Svelte and Node.js";
 
   const pathname = options.pathname ?? '';
 

@@ -12,12 +12,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 560px) {
+      padding-top: 0;
+    }
     a:not(.contact-btn) {
       border-bottom: 3px solid currentColor;
     }
     :global(&__sub-title, &__title) {
       max-width: 50ch;
-      margin: var(--spacing-2) 0;
+      margin-bottom: var(--spacing-2);
       font-size: var(--font-size-2);
       color: var(--darker);
       font-weight: var(--regular-font-weight);

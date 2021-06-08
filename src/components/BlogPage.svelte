@@ -282,7 +282,7 @@
 
   .post__wrapper {
     margin: 0 auto;
-    max-width: 60ch;
+    max-width: 55ch;
 
     @media (max-width: 1660px) and (min-width: 641px) {
       margin-left: 26ch;
@@ -291,7 +291,7 @@
 
   .toc {
     position: sticky;
-    top: 5%;
+    top: 130px;
     float: left;
     padding: var(--spacing-0);
 

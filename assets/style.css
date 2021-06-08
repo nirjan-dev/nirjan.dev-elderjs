@@ -409,7 +409,7 @@ template {
   --bold-font-weight: 600;
   --black-font-weight: 800;
 
-  --body-line-height: 1.5;
+  --body-line-height: 1.6;
   --body-mobile-line-height: 1.4;
   --heading-line-height: 1.2;
 
@@ -452,6 +452,7 @@ template {
   /* z-index */
   --z-index-toc: 99;
   --z-index-bottom-nav: 999;
+  --z-index-sticky-nav: 999;
 }
 
 @media (prefers-color-scheme: dark) {

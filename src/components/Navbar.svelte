@@ -1,13 +1,25 @@
 <script lang="ts">
   import SubMenu from './SubMenu.svelte';
   import type { SocialMenuItems } from '../types/socialMenuItems';
+  import IoMdHome from 'svelte-icons/io/IoMdHome.svelte';
+  import IoIosBook from 'svelte-icons/io/IoIosBook.svelte';
+  import MdEmail from 'svelte-icons/md/MdEmail.svelte';
 
-  export let navItems: { name: string; link: string }[];
+  export let navItems: { name: string; link: string; icon: string }[];
   export let socialMenuItems: SocialMenuItems;
 </script>
 
 <style lang="scss">
   .main-nav {
+    .icon {
+      width: 2em;
+      height: 2em;
+      color: inherit;
+      display: none;
+      & > :global(svg) {
+        fill: currentColor;
+      }
+    }
     &__sub-menu {
       display: none;
     }
@@ -22,6 +34,10 @@
 
       &__sub-menu {
         display: block;
+      }
+
+      .icon {
+        display: inline-block;
       }
     }
 
@@ -38,8 +54,9 @@
       color: var(--dark);
       transition: color 100ms linear;
       display: inline-block;
-      padding: var(--spacing-1) var(--spacing-2);
+      padding: var(--spacing-0) var(--spacing-2);
       min-width: 5rem;
+      text-align: center;
       &:hover,
       &:active,
       &:focus {
@@ -52,7 +69,20 @@
 <nav class="main-nav">
   <ul class="main-nav__list">
     {#each navItems as navItem}
-      <li class="main-nav__item"><a class="main-nav__link" href={navItem.link}> {navItem.name} </a></li>
+      <li class="main-nav__item">
+        <a class="main-nav__link" href={navItem.link}>
+          <span class="icon" aria-hidden="true">
+            {#if navItem.icon === 'IoMdHome'}
+              <IoMdHome />
+            {:else if navItem.icon === 'IoIosBook'}
+              <IoIosBook />
+            {:else if navItem.icon === 'MdEmail'}
+              <MdEmail />
+            {/if}
+          </span>
+          {navItem.name}
+        </a>
+      </li>
     {/each}
 
     <li class="main-nav__sub-menu">

@@ -21,9 +21,16 @@
     border: unset;
     cursor: pointer;
     display: none;
+    transform: translateY(8px);
 
     @media (max-width: 560px) {
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__text {
+        margin-top: var(--spacing-1);
+      }
     }
   }
 
@@ -34,7 +41,7 @@
     margin: 0;
     padding: 0;
     position: fixed;
-    bottom: 58px;
+    bottom: 80px;
     left: 0;
     width: 100%;
     opacity: 0;
@@ -75,8 +82,8 @@
     box-sizing: border-box;
     position: relative;
     display: block;
-    width: 20px;
-    height: 2px;
+    width: 25px;
+    height: 3px;
     border-radius: 3px;
     background: currentColor;
     transition: opacity 0.1s, transform 0.2s ease-out;
@@ -85,10 +92,10 @@
   .gg-menu::before {
     content: '';
     position: absolute;
-    top: -6px;
+    top: -8px;
   }
   .gg-menu::after {
-    top: 6px;
+    top: 8px;
   }
 
   .menu-btn {
@@ -97,7 +104,7 @@
         opacity: 0;
       }
       .gg-menu::after {
-        transform: rotate(-90deg) translateX(6px);
+        transform: rotate(-90deg) translateX(8px);
       }
 
       .gg-menu {
@@ -109,6 +116,7 @@
 
 <button tabindex="-1" aria-hidden="true" class="menu-btn" on:click={toggleMenu} class:is-active={isMenuOpen}>
   <i class="gg-menu" />
+  <span class="menu-btn__text">Menu</span>
 </button>
 
 <ul class="sub-menu" class:is-visible={isMenuOpen}>

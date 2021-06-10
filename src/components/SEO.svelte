@@ -13,9 +13,7 @@
 
   const url = `https://nirjan.dev${pathname}`;
 
-  const image =
-    options.image ??
-    'https://a.storyblok.com/f/101845/1918x985/dd5d08d498/screenshot_2021-01-27-elder-js-template-home.png';
+  const image = options.image ?? 'https://a.storyblok.com/f/101845/1918x985/2a0ef5e437/card_image.png';
 
   const ogTitle = options.ogTitle ?? title;
   const ogDescription = options.ogDescription ?? description;

@@ -5,9 +5,10 @@ module.exports = (req, res) => {
 
   const url = 'https://api.sendinblue.com/v3/contacts';
   const finalBody = JSON.stringify({
-    attributes: { FNAME: body.name },
+    attributes: { FIRSTNAME: body.name },
     updateEnabled: true,
     email: body.email,
+    listIds: [3],
   });
   const options = {
     method: 'POST',

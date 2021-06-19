@@ -1,5 +1,6 @@
 <script lang="ts">
   import Banner from './Banner.svelte';
+  import NewsletterForm from './NewsletterForm.svelte';
   import Container from './Container.svelte';
   import { DateFormatter } from '../utils/dateFormatter';
   import RichTextResolver from 'storyblok-js-client/dist/rich-text-resolver.es';
@@ -509,6 +510,11 @@
         <span aria-hidden="true" class="icon"><IoLogoFacebook /></span>
       </a>
     </section>
+
+    {#if !preview}
+      <!-- content here -->
+      <NewsletterForm hydrate-client={{}} />
+    {/if}
     <script
       src="https://utteranc.es/client.js"
       repo="nirjan-dev/site-comments"

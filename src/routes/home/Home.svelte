@@ -1,5 +1,6 @@
 <script lang="ts">
   import Container from '../../components/Container.svelte';
+  import NewsletterForm from '../../components/NewsletterForm.svelte';
   import Seo from '../../components/SEO.svelte';
   import type { SEOProps } from '../../types/seoProps';
 
@@ -12,6 +13,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    :global(.container) {
+      max-width: 70ch;
+    }
 
     @media (max-width: 560px) {
       padding-top: 0;
@@ -32,6 +37,10 @@
       @media (max-width: 680px) {
         font-size: var(--font-size-2);
       }
+    }
+
+    :global(.newsletterform-component) {
+      margin-top: var(--spacing-4);
     }
 
     &__title-intro {
@@ -97,7 +106,8 @@
           and{' '}
           <a href="https://instagram.com/nirjan.dev" target="_blank" rel="noopener noreferrer"> instagram </a>
         </h2>
-        <a class="contact-btn" href="/contact"> Get in touch </a>
+
+        <NewsletterForm hydrate-client={{}} hydrate-options={{ preload: true, loading: 'eager' }} />
       </Container>
     </div>
   </div>

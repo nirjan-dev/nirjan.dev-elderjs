@@ -14,7 +14,7 @@ module.exports = (req, res) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'api-key': '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',
+      'api-key': process.env.NEWSLETTER_API,
     },
     body: finalBody,
   };

@@ -30,7 +30,7 @@ module.exports = (req, res) => {
     .catch((err) => {
       console.error('error:' + err);
       return res.json({
-        statusCode: 500,
+        statusCode: 200,
       });
     });
 };

@@ -52,6 +52,10 @@
       font-weight: var(--black-font-weight);
       font-variation-settings: 'CASL' 1;
 
+      @media (prefers-color-scheme: dark) {
+        color: var(--primary-light);
+      }
+
       @media (max-width: 680px) {
         font-size: var(--font-size-4);
       }

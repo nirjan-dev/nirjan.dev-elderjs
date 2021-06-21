@@ -18,6 +18,10 @@
     align-items: center;
     margin-top: var(--spacing-6);
 
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--light);
+    }
+
     @media only screen and (max-width: 560px) {
       margin-top: var(--spacing-1);
     }

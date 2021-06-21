@@ -32,6 +32,10 @@
       background-color: var(--light);
       box-shadow: var(--box-shadow-bottom-nav);
 
+      @media (prefers-color-scheme: dark) {
+        background-color: var(--primary);
+      }
+
       &__sub-menu {
         display: block;
       }

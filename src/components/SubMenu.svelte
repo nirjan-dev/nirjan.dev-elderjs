@@ -50,6 +50,10 @@
     transition: transform 0.2s ease-out, opacity 0.1s linear;
     display: flex;
 
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--primary);
+    }
+
     &.is-visible {
       transform: translateY(0);
       opacity: 1;

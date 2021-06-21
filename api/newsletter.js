@@ -35,7 +35,7 @@ module.exports = (req, res) => {
       });
     });
 
-  // return res.json({
-  //   statusCode: 200,
-  // });
+  return res.json({
+    statusCode: 200,
+  });
 };

@@ -20,8 +20,9 @@ module.exports = (req, res) => {
     body: finalBody,
   };
 
-  return fetch(url, options)
-    .then((res) => {
+  fetch(url, options)
+    .then((res) => res.json())
+    .then((result) => {
       console.log(res);
       return res.json({
         statusCode: 200,

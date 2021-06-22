@@ -163,8 +163,19 @@
       }
     }
 
+    h3 {
+      font-size: var(--font-size-3);
+
+      @media (max-width: 680px) {
+        font-size: var(--font-size-2);
+      }
+    }
+
     &__cover-img {
       margin: var(--spacing-2) 0;
+    }
+    img {
+      padding: var(--spacing-1) 0;
     }
     a {
       text-decoration: underline;

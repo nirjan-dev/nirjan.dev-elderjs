@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const body = req.body;
 
   const url = 'https://api.sendinblue.com/v3/contacts';
@@ -20,20 +20,7 @@ module.exports = (req, res) => {
     body: finalBody,
   };
 
-  fetch(url, options)
-    .then((res) => res.json())
-    .then((result) => {
-      console.log(res);
-      return res.json({
-        statusCode: 200,
-      });
-    })
-    .catch((err) => {
-      console.error('error:' + err);
-      return res.json({
-        statusCode: 200,
-      });
-    });
+  await fetch(url, options);
 
   return res.json({
     statusCode: 200,

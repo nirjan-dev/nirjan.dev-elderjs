@@ -36,6 +36,10 @@
   };
 
   const handleSubmit = () => {
+    const windowObj: any = window;
+    if (windowObj && windowObj.panelbear) {
+      windowObj.panelbear('track', 'newsletterClick');
+    }
     if (!validateForm()) {
       return;
     }
@@ -54,10 +58,17 @@
           throw new Error('form submission api error');
         }
         formState = 'SENT';
+        if (windowObj && windowObj.panelbear) {
+          windowObj.panelbear('track', 'newsletterSuccess');
+        }
       })
       .catch((error) => {
         console.error(error);
+        if (windowObj && windowObj.panelbear) {
+          windowObj.panelbear('track', 'newsletterFail');
+        }
         alert('Sending message failed, Please try again');
+
         formState = 'UNSENT';
       });
   };

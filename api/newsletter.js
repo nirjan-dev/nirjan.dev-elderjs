@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
     attributes: { FIRSTNAME: body.name },
     updateEnabled: true,
     email: body.email,
-    listIds: [3],
+    listIds: [13],
   });
   const options = {
     method: 'POST',

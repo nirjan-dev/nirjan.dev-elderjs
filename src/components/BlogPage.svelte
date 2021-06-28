@@ -479,16 +479,7 @@
 <Container>
   <div class="post__wrapper">
     <p class="lead">{post.content.excerpt}</p>
-    {#if coverImage}
-      <!-- content here -->
-      <Image
-        className="post__cover-img"
-        JPEGSrcset={coverImage.JPEGSrcset}
-        placeholder={coverImage.placeholder}
-        alt={coverImage.alt}
-        src={coverImage.src}
-        WebPSrcset={coverImage.WebPSrcset} />
-    {/if}
+
     <article class="post">
       {@html postBody}
     </article>

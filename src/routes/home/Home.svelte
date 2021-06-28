@@ -99,7 +99,7 @@
     <div>
       <Container>
         <h1 class="intro-banner__title">
-          <span class="intro-banner__title-intro">Hi, I'm Nirjan.</span>I make websites and apps that are blazing fast,
+          <span class="intro-banner__title-intro">Hi, I'm Nirjan</span>I make websites and apps that are blazing fast,
           user friendly, optimized and accessible to everyone. I specialize in modern JavaScript, CSS, HTML, Vue, Svelte
           and Node.js
         </h1>

@@ -155,6 +155,18 @@
     flex-direction: column;
     justify-content: flex-start;
 
+    &__excerpt {
+      // font-weight: bold;
+      font-size: var(--font-size-);
+      margin-bottom: var(--spacing-2);
+      background-color: var(--lighter);
+      position: relative;
+      margin-left: -1.5rem;
+      margin-right: -1.5rem;
+      padding: var(--spacing-1);
+      border-radius: var(--border-radius-normal);
+    }
+
     h2 {
       font-size: var(--font-size-4);
 
@@ -476,7 +488,7 @@
 
 <Container>
   <div class="post__wrapper">
-    <p class="lead">{post.content.excerpt}</p>
+    <p class="post__excerpt">{post.content.excerpt}</p>
 
     <article class="post">
       {@html postBody}

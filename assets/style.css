@@ -558,9 +558,6 @@ h5 {
   max-width: 66ch;
 }
 
-.lead {
-  font-weight: bold;
-}
 a {
   color: var(--link-color);
   box-shadow: none;
@@ -590,10 +587,6 @@ a:focus {
   }
   body {
     line-height: var(--body-mobile-line-height);
-  }
-  .lead {
-    font-weight: bold;
-    font-size: var(--font-size-1);
   }
   h1,
   .h1 {

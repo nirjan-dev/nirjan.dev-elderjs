@@ -171,11 +171,9 @@
       }
     }
 
-    &__cover-img {
-      margin: var(--spacing-2) 0;
-    }
     img {
       padding: var(--spacing-1) 0;
+      margin: 0;
     }
     a {
       text-decoration: underline;

@@ -239,7 +239,7 @@
     }
   }
   .share-links {
-    margin: var(--spacing-1) 0;
+    margin: var(--spacing-3) 0 var(--spacing-1);
 
     @media (min-width: 480px) {
       * + * {

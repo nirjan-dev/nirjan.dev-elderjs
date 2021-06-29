@@ -46,7 +46,6 @@
       label {
         border: 1px solid var(--light-purple);
         padding: var(--spacing-0) var(--spacing-1);
-        padding-left: var(--spacing-3);
         cursor: pointer;
         width: 100%;
         display: flex;
@@ -55,6 +54,7 @@
         border-radius: var(--border-radius-normal);
         transition: background-color 0.2s linear;
         box-sizing: border-box;
+        border: 2px solid currentColor;
 
         &:hover,
         &:focus {
@@ -69,11 +69,14 @@
 
       input {
         position: absolute;
-        top: 50%;
-        left: 1rem;
-        transform: translateY(-50%);
+        width: 1px;
+        height: 1px;
         padding: 0;
-        margin: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
       }
 
       input:checked + label {

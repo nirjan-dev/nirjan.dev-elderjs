@@ -20,6 +20,4 @@
   }
 </style>
 
-<a href={helpers.permalinks.home({ slug: '/' })}>
-  <img width="205" height="70" src="/img/logo.svg" alt="Studio Dagger Logo" />
-</a>
+<a href={helpers.permalinks.home({ slug: '/' })}> <img width="205" height="70" src="/img/logo.svg" alt="home" /> </a>

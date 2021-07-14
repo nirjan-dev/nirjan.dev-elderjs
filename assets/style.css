@@ -371,7 +371,7 @@ template {
   --primary-dark: hsl(var(--primary-hue), var(--primary-dark-sl));
 
   --secondary-hue: var(--green-hue);
-  --secondary-sl: 45%, 56%;
+  --secondary-sl: 45%, 50%;
   --secondary-light-sl: 35%, 65%;
   --secondary-dark-sl: 67%, 23%;
   --secondary: hsl(var(--secondary-hue), var(--secondary-sl));
@@ -453,6 +453,7 @@ template {
   --z-index-toc: 99;
   --z-index-bottom-nav: 999;
   --z-index-sticky-nav: 999;
+  --z-index-skip-link: 9999;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -605,7 +606,7 @@ a:focus {
 *:focus {
   /* Provide a fallback style for browsers
      that don't support :focus-visible */
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--secondary);
   border-radius: var(--border-radius-normal);
 }
 
@@ -620,6 +621,6 @@ a:focus {
   /* Draw a very noticeable focus style for
      keyboard-focus on browsers that do support
      :focus-visible */
-  outline: 4px dashed var(--primary);
+  outline: 4px dashed var(--secondary);
   border-radius: var(--border-radius-normal);
 }

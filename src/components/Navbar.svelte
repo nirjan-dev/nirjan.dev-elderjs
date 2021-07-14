@@ -66,6 +66,14 @@
       &:focus {
         color: var(--secondary);
       }
+
+      @media (max-width: 560px) {
+        &:hover,
+        &:active,
+        &:focus {
+          color: var(--darkest);
+        }
+      }
     }
   }
 </style>

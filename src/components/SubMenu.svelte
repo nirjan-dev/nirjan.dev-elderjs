@@ -23,6 +23,10 @@
     display: none;
     transform: translateY(8px);
 
+    &:focus {
+      color: var(--darkest);
+    }
+
     @media (max-width: 560px) {
       display: flex;
       flex-direction: column;
@@ -118,12 +122,17 @@
   }
 </style>
 
-<button tabindex="-1" aria-hidden="true" class="menu-btn" on:click={toggleMenu} class:is-active={isMenuOpen}>
+<button
+  class="menu-btn"
+  on:click={toggleMenu}
+  class:is-active={isMenuOpen}
+  aria-expanded={isMenuOpen}
+  aria-controls="subMenu">
   <i class="gg-menu" />
   <span class="menu-btn__text">Menu</span>
 </button>
 
-<ul class="sub-menu" class:is-visible={isMenuOpen}>
+<ul class="sub-menu" id="subMenu" class:is-visible={isMenuOpen}>
   {#each socialMenuItems as socialMenuItem}
     <li class="sub-menu__item">
       <a

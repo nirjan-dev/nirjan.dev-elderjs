@@ -33,6 +33,7 @@
     position: absolute;
     top: 1rem;
     left: -9999rem;
+    z-index: var(--z-index-skip-link);
 
     &:focus {
       left: 50%;

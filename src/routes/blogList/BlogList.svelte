@@ -41,9 +41,13 @@
     &__title {
       max-width: 25ch;
       transition: color 200ms ease-in;
-      color: var(--darkest);
+      color: var(--primary-dark);
 
       font-size: var(--font-size-4);
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--primary-light);
+      }
 
       @media (max-width: 680px) {
         font-size: var(--font-size-3);

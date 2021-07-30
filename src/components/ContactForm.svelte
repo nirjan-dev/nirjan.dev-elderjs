@@ -100,7 +100,6 @@
   }
 
   .form {
-    margin-top: 2rem;
     &__group {
       position: relative;
       margin: var(--spacing-2) 0;

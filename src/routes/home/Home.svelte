@@ -40,7 +40,7 @@
     }
 
     :global(.newsletterform-component) {
-      margin-top: var(--spacing-4);
+      margin-top: var(--spacing-3);
     }
 
     &__title-intro {

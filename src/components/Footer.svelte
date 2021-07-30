@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: var(--spacing-6);
+    margin-top: var(--spacing-1);
 
     @media (prefers-color-scheme: dark) {
       background-color: var(--light);

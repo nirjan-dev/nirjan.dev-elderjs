@@ -353,7 +353,7 @@ template {
 /* app styles */
 :root {
   /* colors */
-  --purple-hue: 263;
+  --purple-hue: 257.5;
   --green-hue: 95;
 
   --purple-gradient-dark: hsl(272, 76%, 53%);
@@ -363,9 +363,9 @@ template {
 
   /* brand colors */
   --primary-hue: var(--purple-hue);
-  --primary-sl: 45%, 56%;
+  --primary-sl: 48%, 38%;
   --primary-light-sl: 30%, 60%;
-  --primary-dark-sl: 65%, 35%;
+  --primary-dark-sl: 100%, 23.5%;
   --primary: hsl(var(--primary-hue), var(--primary-sl));
   --primary-light: hsl(var(--primary-hue), var(--primary-light-sl));
   --primary-dark: hsl(var(--primary-hue), var(--primary-dark-sl));
@@ -458,9 +458,9 @@ template {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-dark-sl: 45%, 56%;
-    --primary-light-sl: 30%, 60%;
-    --primary-sl: 65%, 35%;
+    --primary-dark-sl: 48%, 38%;
+    --primary-light-sl: 38%, 50%;
+    --primary-sl: 100%, 23.5%;
 
     --secondary-sl: 86%, 25%;
     --secondary-light-sl: 75%, 70%;

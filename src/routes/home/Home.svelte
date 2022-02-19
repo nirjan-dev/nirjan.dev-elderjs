@@ -100,7 +100,7 @@
       <Container>
         <h1 class="intro-banner__title">
           <span class="intro-banner__title-intro">Hi, I'm Nirjan</span>I make websites and apps that are blazing fast,
-          user friendly, optimized and accessible to everyone. I specialize in modern JavaScript, CSS, HTML, Vue, Svelte
+          user friendly, optimized and accessible to everyone. I specialize in modern JavaScript, CSS, HTML, Vue, React
           and Node.js
         </h1>
         <h2 class="intro-banner__sub-title">
